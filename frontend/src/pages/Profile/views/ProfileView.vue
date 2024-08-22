@@ -29,13 +29,7 @@ const goBack = () => {
 
 <template>
   <v-container fluid>
-    <v-btn
-      variant="tonal"
-      rounded="pill"
-      prepend-icon="mdi-arrow-left"
-      text="Back"
-      @click="goBack"
-    ></v-btn>
+    <!-- <v-btn variant="tonal" prepend-icon="mdi-arrow-left" text="Back" @click="goBack"></v-btn> -->
     <CustomerContent v-if="auth.isCustomer()"></CustomerContent>
     <CompanyContent v-else></CompanyContent>
   </v-container>

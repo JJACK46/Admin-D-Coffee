@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from '../stores/user'
 import UserDialog from '../components/UserDialog.vue'
-import TableLayout from '@/layouts/TableLayout.vue'
+import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'
 import { baseURLImage } from '@/services/http'

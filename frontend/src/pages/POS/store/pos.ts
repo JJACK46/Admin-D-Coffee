@@ -1,20 +1,20 @@
 import { ProductService } from '@/services/product'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { Promotion } from '@/views/Promotion/types/Promotion'
+import type { Promotion } from '@/pages/Promotion/types/Promotion'
 import { useAuthStore } from '@/stores/auth'
-import { typesOfProducts, type Product, type TypeOfProduct } from '@/views/Product/types/product'
+import { typesOfProducts, type Product, type TypeOfProduct } from '@/pages/Product/types/product'
 import {
   defaultReceipt,
   type PaymentTypes,
   type Receipt,
   type ReceiptItem,
   type receiptItemsShort
-} from '@/views/Receipt/types/receipt'
+} from '@/pages/Receipt/types/receipt'
 import { ReceiptService } from '@/services/receipt'
 import { PromotionService } from '@/services/promotion'
 import { getDateNowString, getTimeNowString } from '@/utils/date'
-import type { Customer } from '@/views/Customer/types/Customer'
+import type { Customer } from '@/pages/Customer/types/Customer'
 import { CustomerService } from '@/services/customer'
 
 type StatusObject = {

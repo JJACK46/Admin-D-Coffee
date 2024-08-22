@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import TableLayout from '@/layouts/TableLayout.vue'
+import TableLayout from '@/components/MainTable.vue'
 import { useProductStore } from '../store/product'
 import ProductDialog from '../components/ProductDialog.vue'
 import { baseURLImage } from '@/services/http'

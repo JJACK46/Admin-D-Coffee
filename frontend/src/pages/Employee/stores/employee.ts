@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
 import { defaultEmployee, type Employee } from '../types/employee'
 import { EmployeeService } from '@/services/employee'
-import type { Branch } from '@/views/Branch/types/branch'
+import type { Branch } from '@/pages/Branch/types/branch'
 import { BranchService } from '@/services/branch'
 
 export const useEmployeeStore = defineStore('employee', {
@@ -89,14 +89,14 @@ export const useEmployeeStore = defineStore('employee', {
       this.fetchAll()
       this.closeDialog()
     },
-    handleFileChange(files: File[]) {
+    handleFileChange(files: File): void {
       if (files) {
-        this.tempItem.imageFile = files[0]
+        this.tempItem.imageFile = files
         const reader = new FileReader()
-        reader.onload = (event: any) => {
-          this.tempItem.imageUrl = event.target.result
+        reader.onload = (event: ProgressEvent<FileReader>) => {
+          this.tempItem.imageUrl = event.target?.result?.toString()
         }
-        reader.readAsDataURL(files[0])
+        reader.readAsDataURL(files)
       }
     }
   }

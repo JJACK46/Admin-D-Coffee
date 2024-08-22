@@ -17,7 +17,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { v4 } from 'uuid';
 import * as path from 'path';
-import { Public } from 'src/auth/constants';
+import { Public } from 'src/auth/auth.constants';
 
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('customers')

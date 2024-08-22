@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import BranchDialog from '../components/BranchDialog.vue'
 import { useBranchStore } from '../stores/branch'
-import TableLayout from '@/layouts/TableLayout.vue'
+import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 
 const store = useBranchStore()

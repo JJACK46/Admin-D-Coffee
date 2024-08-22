@@ -10,7 +10,7 @@ import {
 import { IngredientsService } from './ingredients.service';
 import { CreateIngredientDto } from './dto/create-ingredient.dto';
 import { UpdateIngredientDto } from './dto/update-ingredient.dto';
-import { Public } from 'src/auth/constants';
+import { Public } from 'src/auth/auth.constants';
 
 @Controller('ingredients')
 export class IngredientsController {

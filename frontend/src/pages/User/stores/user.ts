@@ -2,11 +2,11 @@ import { UserService } from '@/services/user'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { defaultUser, type User } from '../types/user'
-import { type Employee } from '@/views/Employee/types/employee'
+import { type Employee } from '@/pages/Employee/types/employee'
 import { EmployeeService } from '@/services/employee'
 import { RoleService } from '@/services/roles'
 import type { Role } from '../types/role'
-import type { Customer } from '@/views/Customer/types/Customer'
+import type { Customer } from '@/pages/Customer/types/Customer'
 import { CustomerService } from '@/services/customer'
 
 export const useUserStore = defineStore('users', {

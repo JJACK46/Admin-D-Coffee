@@ -1,4 +1,4 @@
-import type { Branch } from '@/views/Branch/types/branch'
+import type { Branch } from '@/pages/Branch/types/branch'
 import type { Genders } from './gender'
 import type { JobTitles } from './jobTitle'
 

@@ -7,6 +7,7 @@ import { watch } from 'vue'
 import { RouterView } from 'vue-router'
 import AttendanceDialog from './pages/Attendance/components/AttendanceDialog.vue'
 import MainAppBar from './components/MainAppBar.vue'
+import MainLayout from './layouts/MainLayout.vue'
 
 const auth = useAuthStore()
 const drawer = useMainDrawerStore()
@@ -17,40 +18,14 @@ watch(useDisplay().mdAndDown, () => {
 </script>
 
 <template>
-  <AttendanceDialog />
-  <v-snackbar
-    class="text-center"
-    v-model="auth.isTokenExpired"
-    rounded
-    variant="outlined"
-    location="top"
-    color="red"
-    close-delay="5000"
-  >
-    <h2>Your token was expired or unauthorized, You need to login again. <br /></h2>
-  </v-snackbar>
-  <v-layout>
-    <span
-      name="backgroundDialog"
-      v-if="drawer.isDrawerExpand && auth.showAppBar"
-      class="h-screen w-100"
-      :style="{
-        position: 'fixed',
-        background: 'rgba(0,0,0,0.5)',
-        zIndex: '1'
-      }"
-    >
-    </span>
-    <MainAppBar v-if="auth.showAppBar" />
-    <MainDrawer v-if="auth.showAppBar" />
-    <v-main class="d-flex justify-center align-center pl-15 pr-15 overflow-auto">
-      <RouterView />
-    </v-main>
-  </v-layout>
+  <v-app>
+    <MainLayout />
+  </v-app>
 </template>
 
 <style>
-* {
+*,
+.v-application .v-application--wrap * {
   font-family: 'Kanit';
 }
 

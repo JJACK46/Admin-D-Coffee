@@ -50,27 +50,34 @@ export const useAuthStore = defineStore('auth', {
       }
     },
     getCurrentUser(): UserPayload | undefined {
-      return JSON.parse(localStorage.getItem('user') as string)
+      // return JSON.parse(localStorage.getItem('user') as string)
+      return
     },
     isAuthenticated(): boolean {
       return localStorage.getItem('user') !== null && !this.isTokenExpired
     },
-    isAuthorized(routeRoles: string[]): boolean {
-      const userPayloadString = localStorage.getItem('user')
+    async isAuthorized(routeRoles: string[]): Promise<boolean> {
+      // const userPayloadString = localStorage.getItem('user')
 
-      if (!userPayloadString) {
-        console.error('User payload not found in localStorage.')
+      // if (!userPayloadString) {
+      //   console.error('User payload not found in localStorage.')
+      //   return false
+      // }
+
+      // const user: UserPayload = JSON.parse(userPayloadString)
+
+      // if (!user.role) {
+      //   console.error('User role not found in user payload.')
+      //   return false
+      // }
+
+      // return routeRoles.some((role) => role === user.role)
+
+      const res = await AuthService.getProfile()
+      if (!res) {
         return false
       }
-
-      const user: UserPayload = JSON.parse(userPayloadString)
-
-      if (!user.role) {
-        console.error('User role not found in user payload.')
-        return false
-      }
-
-      return routeRoles.some((role) => role === user.role)
+      return routeRoles.some((role) => role === res.role)
     },
     async logout(isTokenExpired?: boolean): Promise<void> {
       this.user = null

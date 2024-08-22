@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useIngredientStore } from '../stores/ingredient'
 import IngredientDialog from '../components/IngredientDialog.vue'
-import TableLayout from '@/layouts/TableLayout.vue'
+import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'
 

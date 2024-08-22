@@ -6,7 +6,7 @@ export const useMainDrawerStore = defineStore('main_drawer', {
   state() {
     return {
       railState: ref(true),
-      isDrawerExpand: ref(false)
+      isExpand: ref()
     }
   },
   getters: {
@@ -22,13 +22,13 @@ export const useMainDrawerStore = defineStore('main_drawer', {
       this.railState = !this.railState
     },
     switchDrawer() {
-      this.isDrawerExpand = !this.isDrawerExpand
+      this.isExpand = !this.isExpand
     },
     closeDrawer() {
-      this.isDrawerExpand = false
+      this.isExpand = false
     },
     openDrawer() {
-      this.isDrawerExpand = true
+      this.isExpand = true
     }
   }
 })

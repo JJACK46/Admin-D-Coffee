@@ -12,7 +12,7 @@ function generateRandomProductSold(): number[] {
 </script>
 
 <template>
-  <v-card rounded="xl" class="h-100">
+  <v-card rounded="lg" class="h-100">
     <template #title> Top 5 the most product sold </template>
     <template #append>
       <v-btn class="pa-0" variant="plain"> More info </v-btn>

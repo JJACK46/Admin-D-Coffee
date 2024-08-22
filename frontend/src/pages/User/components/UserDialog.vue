@@ -27,7 +27,7 @@ onMounted(() => {
 
 <template>
   <v-dialog v-model="store.dialogState" width="512" persistent>
-    <v-card rounded="lg">
+    <v-card>
       <h3 class="text-center pa-3">
         {{ store.formTitle }}
       </h3>
@@ -104,11 +104,11 @@ onMounted(() => {
       </v-form>
       <v-card-actions class="pa-5">
         <v-spacer></v-spacer>
-        <v-btn variant="outlined" @click="store.closeDialog" text="Close"> </v-btn>
+        <v-btn variant="text" color="white" @click="store.closeDialog" text="Close"> </v-btn>
         <v-btn
           :disabled="!formComplete"
-          color="primary"
-          variant="flat"
+          color="success"
+          variant="text"
           @click="store.save()"
           text="Save"
         >

@@ -10,7 +10,7 @@ import {
 import { RolesService } from './roles.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
-import { Public } from 'src/auth/constants';
+import { Public } from 'src/auth/auth.constants';
 
 @Controller('roles')
 export class RolesController {

@@ -8,7 +8,6 @@ import DatePickerDialog from '@/components/DatePickerDialog.vue'
 import type { MaskaDetail, MaskOptions } from 'maska'
 import type { Employee } from '../types/employee'
 import { computed } from 'vue'
-import { baseURLImage } from '@/services/http'
 const store = useEmployeeStore()
 const optionsMask: MaskOptions = {
   mask: '###-###-####',
@@ -39,10 +38,10 @@ const fieldData: { name: keyof Employee; label: string; type: string }[] = [
   { name: 'gender', label: 'Gender', type: 'text' }
 ]
 
-const existImageUrl = computed(() => {
-  if (store.tempItem.imageUrl) {
-    return `${baseURLImage}/employees/${store.tempItem.imageUrl}`
-  }
+const computedImage = computed(() => {
+  // if (store.tempItem.imageUrl) {
+  //   return `${baseURLImage}/employees/${store.tempItem.imageUrl}`
+  // }
   return store.tempItem.imageUrl
 })
 </script>
@@ -57,7 +56,7 @@ const existImageUrl = computed(() => {
           <v-col cols="12">
             <div>
               <v-img
-                :src="existImageUrl"
+                :src="computedImage"
                 :style="{
                   width: '200px',
                   height: '200px',
@@ -73,7 +72,8 @@ const existImageUrl = computed(() => {
                 type="file"
                 show-size
                 variant="outlined"
-                label="Profile Image"
+                label="Upload Image"
+                single-line
                 prepend-icon="mdi-camera"
                 accept="image/png,image/jpeg"
                 :rules="[

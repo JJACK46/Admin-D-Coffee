@@ -6,7 +6,7 @@ const store = useHomeStore()
 </script>
 
 <template>
-  <v-container fluid class="h-100">
+  <v-container fluid>
     <v-row>
       <v-col xs="12" sm="4">
         <CardShort

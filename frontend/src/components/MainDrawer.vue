@@ -30,7 +30,7 @@ const drawer = useMainDrawerStore()
 </script>
 
 <template>
-  <v-navigation-drawer v-model="navHandle.isDrawerExpand" disable-resize-watcher app>
+  <v-navigation-drawer v-model="drawer.isExpand" persistent app>
     <v-list>
       <div v-for="item in navItems" :key="item.title">
         <v-list-group
@@ -46,19 +46,12 @@ const drawer = useMainDrawerStore()
             v-for="subItem in item.menu"
             :key="subItem.title"
             :to="subItem.path"
-            @click="drawer.switchDrawer()"
             :prepend-icon="subItem.icon"
           >
             {{ subItem.title }}
           </v-list-item>
         </v-list-group>
-        <v-list-item
-          v-else
-          :title="item.title"
-          :to="item.path"
-          :prepend-icon="item.icon"
-          @click="drawer.switchDrawer()"
-        >
+        <v-list-item v-else :title="item.title" :to="item.path" :prepend-icon="item.icon">
         </v-list-item>
       </div>
     </v-list>

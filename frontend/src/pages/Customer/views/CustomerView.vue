@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import TableLayout from '@/layouts/TableLayout.vue'
+import TableLayout from '@/components/MainTable.vue'
 import { useCustomerStore } from '../store/customer'
 import CustomerDialog from '../components/CustomerDialog.vue'
 import SearchTableField from '@/components/SearchTableField.vue'

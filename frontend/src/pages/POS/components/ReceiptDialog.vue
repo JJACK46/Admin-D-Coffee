@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePosStore } from '../store/pos'
 import StatusDialog from './StatusDialog.vue'
-import ReceiptTable from '../../Receipt/components/ReceiptTable.vue'
+import ReceiptTable from '../../Receipt/components/ReceiptSlip.vue'
 
 const store = usePosStore()
 </script>

@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ProfileService } from './profile.service';
 import { ProfileDTO } from './dto/profile.dto';
-import { Public } from 'src/auth/constants';
+import { Public } from 'src/auth/auth.constants';
 
 @Controller('profile')
 export class ProfileController {

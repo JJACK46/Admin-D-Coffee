@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/auth'
 import { useMainDrawerStore } from '@/stores/drawer'
 import { useNotificationStore } from '@/stores/notifications'
 import { ref, watch } from 'vue'
-import { useTheme } from 'vuetify'
+import { useDisplay, useTheme } from 'vuetify'
 
 const auth = useAuthStore()
 const drawer = useMainDrawerStore()
@@ -49,13 +49,13 @@ const fieldAppMenu = [
   <v-app-bar :color="colorAppBar" elevation="1" app>
     <template #prepend>
       <v-app-bar-nav-icon
-        v-if="!auth.isCustomer()"
+        v-if="useDisplay().mdAndDown.value"
         @click="drawer.switchDrawer()"
       ></v-app-bar-nav-icon>
     </template>
 
     <template #title>
-      <v-list-item title="Enterprise App" prepend-avatar="src/assets/MainLogo.png" class="pa-0">
+      <v-list-item title="Enterprise App" prepend-avatar="d-coffee-logo.png" class="pa-0">
         <template #title>
           <h4 v-if="auth.isCustomer()">D-Coffee Shop</h4>
           <h4 v-else>Enterprise App</h4>

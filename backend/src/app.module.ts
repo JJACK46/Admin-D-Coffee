@@ -23,30 +23,34 @@ import { ReportsModule } from './reports/reports.module';
 import { PayrollModule } from './payroll/payroll.module';
 import { BillsModule } from './bills/bills.module';
 import { ProfileModule } from './profile/profile.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
     }),
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'demo-d-coffee.db',
-      autoLoadEntities: true,
-      synchronize: true, //true for not production only and not have already database file
-      logging: true, //true for check query and error
-    }),
     // TypeOrmModule.forRoot({
-    //   type: 'mysql',
-    //   host: 'localhost',
-    //   port: 3306,
-    //   username: 'root',
-    //   password: '',
-    //   database: 'dcoffee',
+    //   type: 'sqlite',
+    //   database: 'demo-d-coffee.db',
     //   autoLoadEntities: true,
-    //   synchronize: true,
-    //   logging: true,
+    //   synchronize: true, //true for not production only and not have already database file
+    //   logging: true, //true for check query and error
     // }),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: '',
+      database: 'dcoffee',
+      autoLoadEntities: true,
+      synchronize: true,
+      logging: true,
+    }),
     UsersModule,
     IngredientsModule,
     CustomersModule,

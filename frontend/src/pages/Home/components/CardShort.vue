@@ -32,7 +32,7 @@ const ratio = computed((): string => {
     v-else
     min-height="200"
     max-height="200"
-    rounded="xl"
+    rounded="lg"
     class="pa-4 align-center text-left custom-card text-h6"
     :prepend-icon="props.icon"
   >

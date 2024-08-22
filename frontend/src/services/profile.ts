@@ -1,4 +1,4 @@
-import type { ProfileDTO } from './../views/Profile/types/profile'
+import type { ProfileDTO } from '@/pages/Profile/types/profile'
 import http from './http'
 
 export class ProfileServices {
@@ -9,7 +9,7 @@ export class ProfileServices {
       const res = await http.post(`${this.path}/sales`, dto)
       return res.data
     } catch (error) {
-      throw new Error()
+      console.error(error)
     }
   }
 }

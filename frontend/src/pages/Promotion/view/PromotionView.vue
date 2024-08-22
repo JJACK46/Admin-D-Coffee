@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import TableLayout from '@/layouts/TableLayout.vue'
+import TableLayout from '@/components/MainTable.vue'
 import PromotionDialog from '../components/PromotionDialog.vue'
 import { usePromotionStore } from '../store/promotion'
 import { ref } from 'vue'

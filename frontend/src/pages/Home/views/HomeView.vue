@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-container fluid class="h-100">
+  <v-container fluid>
     <v-sheet class="pt-3 bg-transparent" flat>
       <v-row no-gutters>
         <v-col cols="auto">
@@ -28,14 +28,13 @@ onMounted(() => {
         </v-col>
         <v-spacer></v-spacer>
         <v-col class="text-end pa-0 ma-0">
-          <v-chip size="large" color="orange" prepend-icon="mdi-account">{{
+          <v-chip rounded size="large" color="orange" prepend-icon="mdi-account">{{
             auth.getCurrentUser()?.role.toUpperCase()
           }}</v-chip>
         </v-col>
         <v-col cols="12">
           <v-select
             variant="solo"
-            rounded="lg"
             clearable
             v-model="store.selectBranch"
             label="Select a branch"
@@ -109,7 +108,6 @@ onMounted(() => {
         <v-select
           v-model="store.revenueDTO.month"
           variant="solo"
-          rounded="pill"
           label="Select a month"
           :items="monthsWithNum"
           item-title="label"
@@ -127,7 +125,6 @@ onMounted(() => {
         <v-select
           v-model="store.revenueDTO.year"
           variant="solo"
-          rounded="pill"
           label="Select a year"
           :items="[2023, 2024]"
           clearable
@@ -140,7 +137,7 @@ onMounted(() => {
         />
       </v-col>
       <v-col lg="4">
-        <v-card class="pa-4 mb-5 text-center" rounded="pill"
+        <v-card class="pa-4 mb-5 text-center"
           >{{
             `Since ${store.getRevenueYear.map((item) => item.year).length > 0 ? store.getRevenueYear.map((item) => item.year) : '...'} `
           }}
@@ -157,7 +154,6 @@ onMounted(() => {
           class="w-100"
           prepend-icon="mdi-autorenew"
           variant="outlined"
-          rounded="pill"
           @click="store.fetchRevenue()"
           >reload data</v-btn
         >

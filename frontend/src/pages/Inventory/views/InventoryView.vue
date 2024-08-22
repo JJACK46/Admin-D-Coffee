@@ -72,7 +72,7 @@
       <InventoryTable />
     </v-card>
     <v-card rounded="lg" class="py-3 border bg-transparent">
-      <h5 class="d-flex justify-center align-center">
+      <h5 class="d-flex justify-center align-center" color="warning">
         <v-icon icon="mdi-alert" class="mr-1 ml-1"> </v-icon>
         Be cautious to take any action !
       </h5>
