@@ -1,12 +1,5 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
 
 import '@mdi/font/css/materialdesignicons.css'
 
@@ -15,38 +8,9 @@ import router from './router'
 import { useAuthStore } from './stores/auth'
 
 import { vMaska } from 'maska'
+import vuetify from './plugins/vuetify'
 
 const app = createApp(App)
-
-const vuetify = createVuetify({
-  components,
-  directives,
-  theme: {
-    defaultTheme: 'dark',
-    themes: {
-      light: {
-        dark: false,
-        colors: {
-          primary: '#6F4E37',
-          secondary: '#654335',
-          third: '#51312E',
-          fourth: '#432D2B',
-          fifth: '#322626'
-        }
-      },
-      dark: {
-        dark: true,
-        colors: {
-          primary: '#6F4E37',
-          secondary: '#654335',
-          third: '#51312E',
-          fourth: '#432D2B',
-          fifth: '#322626'
-        }
-      }
-    }
-  }
-})
 
 app.use(createPinia())
 app.use(router)

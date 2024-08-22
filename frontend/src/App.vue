@@ -5,7 +5,7 @@ import { useMainDrawerStore } from './stores/drawer'
 import { useDisplay } from 'vuetify'
 import { watch } from 'vue'
 import { RouterView } from 'vue-router'
-import AttendanceDialog from './views/Attendance/components/AttendanceDialog.vue'
+import AttendanceDialog from './pages/Attendance/components/AttendanceDialog.vue'
 import MainAppBar from './components/MainAppBar.vue'
 
 const auth = useAuthStore()

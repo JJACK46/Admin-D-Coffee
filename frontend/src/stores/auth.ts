@@ -2,7 +2,7 @@ import router from '@/router'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { AuthService } from '@/services/auth'
-import { useAttendanceStore } from '@/views/Attendance/stores/attendance'
+import { useAttendanceStore } from '@/pages/Attendance/stores/attendance'
 import { ROLE_ADMIN, ROLE_CUSTOMER, ROLE_EMPLOYEE, ROLE_MANAGER } from '@/router/enum'
 
 export interface UserPayload {

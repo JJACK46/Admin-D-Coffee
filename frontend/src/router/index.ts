@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/Home/views/HomeView.vue'
-import LoginView from '../views/Login/views/LoginView.vue'
+import HomeView from '../pages/Home/views/HomeView.vue'
+import LoginView from '../pages/Login/views/LoginView.vue'
 import { ROLE_ADMIN, ROLE_ANYONE, ROLE_CUSTOMER, ROLE_EMPLOYEE, ROLE_MANAGER } from './enum'
 
 const router = createRouter({
@@ -15,19 +15,19 @@ const router = createRouter({
     {
       path: '/home-customer',
       name: 'home-customer',
-      component: () => import('../views/Home/views/CustomerView.vue'),
+      component: () => import('../pages/Home/views/CustomerView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_CUSTOMER] }
     },
     {
       path: '/home-manager',
       name: 'home-manager',
-      component: () => import('../views/Home/views/ManagerView.vue'),
+      component: () => import('../pages/Home/views/ManagerView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_MANAGER] }
     },
     {
       path: '/home-employee',
       name: 'home-employee',
-      component: () => import('../views/Home/views/EmployeeView.vue'),
+      component: () => import('../pages/Home/views/EmployeeView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_EMPLOYEE] }
     },
     {
@@ -39,115 +39,115 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      component: () => import('../views/About/views/AboutView.vue'),
+      component: () => import('../pages/About/views/AboutView.vue'),
       meta: { requiresAuth: true, roles: ROLE_ANYONE }
     },
     {
       path: '/pos',
       name: 'pos',
-      component: () => import('../views/POS/view/POSview.vue'),
+      component: () => import('../pages/POS/view/POSview.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN, ROLE_EMPLOYEE, ROLE_MANAGER] }
     },
     {
       path: '/product',
       name: 'product',
-      component: () => import('../views/Product/view/ProductView.vue'),
+      component: () => import('../pages/Product/view/ProductView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN, ROLE_MANAGER] }
     },
     {
       path: '/customer',
       name: 'customer',
-      component: () => import('../views/Customer/views/CustomerView.vue'),
+      component: () => import('../pages/Customer/views/CustomerView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN, ROLE_MANAGER, ROLE_EMPLOYEE] }
     },
     {
       path: '/promotion',
       name: 'promotion',
-      component: () => import('../views/Promotion/view/PromotionView.vue'),
+      component: () => import('../pages/Promotion/view/PromotionView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN, ROLE_MANAGER] }
     },
     {
       path: '/inventory',
       name: 'inventory',
-      component: () => import('../views/Inventory/views/InventoryView.vue'),
+      component: () => import('../pages/Inventory/views/InventoryView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN, ROLE_MANAGER, ROLE_EMPLOYEE] }
     },
     {
       path: '/ingredient',
       name: 'ingredient',
-      component: () => import('../views/Ingredient/views/IngredientView.vue'),
+      component: () => import('../pages/Ingredient/views/IngredientView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN, ROLE_MANAGER] }
     },
     {
       path: '/users',
       name: 'users',
-      component: () => import('../views/User/views/UserView.vue'),
+      component: () => import('../pages/User/views/UserView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN] }
     },
     {
       path: '/employee',
       name: 'employee',
-      component: () => import('../views/Employee/views/EmployeeView.vue'),
+      component: () => import('../pages/Employee/views/EmployeeView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN] }
     },
     {
       path: '/payroll',
       name: 'payroll',
-      component: () => import('../views/Payroll/views/PayrollView.vue'),
+      component: () => import('../pages/Payroll/views/PayrollView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN] }
     },
     {
       path: '/receipt',
       name: 'receipt',
-      component: () => import('../views/Receipt/views/ReceiptView.vue'),
+      component: () => import('../pages/Receipt/views/ReceiptView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_MANAGER] }
     },
     {
       path: '/bill',
       name: 'bill',
-      component: () => import('../views/Bill/views/BillViews.vue'),
+      component: () => import('../pages/Bill/views/BillViews.vue'),
       meta: { requiresAuth: true, roles: [ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_MANAGER] }
     },
     {
       path: '/attendance',
       name: 'attendance',
-      component: () => import('../views/Attendance/views/AttendanceView.vue'),
+      component: () => import('../pages/Attendance/views/AttendanceView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_MANAGER] }
     },
     {
       path: '/stock-taking-history',
       name: 'stock taking history',
-      component: () => import('../views/Inventory/views/StockTakingHistory.vue'),
+      component: () => import('../pages/Inventory/views/StockTakingHistory.vue'),
       meta: { requiresAuth: true, roles: [ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_MANAGER] }
     },
     {
       path: '/forbidden',
       name: 'forbidden',
-      component: () => import('../views/Forbidden/views/ForbiddenView.vue'),
+      component: () => import('../pages/Forbidden/views/ForbiddenView.vue'),
       meta: { requiresAuth: false }
     },
     {
       path: '/branch',
       name: 'branch',
-      component: () => import('../views/Branch/views/BranchView.vue'),
+      component: () => import('../pages/Branch/views/BranchView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_ADMIN] }
     },
     {
       path: '/replenishment-history',
       name: 'replenishment history',
-      component: () => import('../views/Inventory/views/ReplenishmentHistory.vue'),
+      component: () => import('../pages/Inventory/views/ReplenishmentHistory.vue'),
       meta: { requiresAuth: true, roles: [ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_MANAGER] }
     },
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/Profile/views/ProfileView.vue'),
+      component: () => import('../pages/Profile/views/ProfileView.vue'),
       meta: { requiresAuth: true, roles: ROLE_ANYONE }
     },
     {
       path: '/report',
       name: 'report',
-      component: () => import('../views/Report/views/ReportView.vue'),
+      component: () => import('../pages/Report/views/ReportView.vue'),
       meta: { requiresAuth: true, roles: [ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_MANAGER] }
     }
   ]
