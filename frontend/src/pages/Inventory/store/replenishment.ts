@@ -58,7 +58,7 @@ export const useReplenishmentStore = defineStore('replenishment', {
     async save() {
       const status = await ReplenishmentService.create(<Replenishment>{
         createdDate: getDateNowString(),
-        employeeId: this.auth.getCurrentUser()?.employeeId,
+        employeeId: this.auth.getCurrentUser?.employeeId,
         inventoryId: this.inv.getInventoryId,
         totalCost: this.getTotalCost,
         replenishmentItems: this.repItems

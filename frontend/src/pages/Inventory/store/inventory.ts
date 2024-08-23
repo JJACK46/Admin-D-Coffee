@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { InventoryService } from '@/services/inventory'
-import type { Branch } from '@/views/Branch/types/branch'
-import type { Ingredient } from '@/views/Ingredient/types/ingredient'
+import type { Branch } from '@/pages/Branch/types/branch'
+import type { Ingredient } from '@/pages/Ingredient/types/ingredient'
 import { IngredientService } from '@/services/ingredient'
 import { generatePDF } from '@/utils/pdf'
 import { BranchService } from '@/services/branch'
@@ -24,7 +24,7 @@ export const useInventoryStore = defineStore('inventory', {
         { title: 'Unit', key: 'unit', sortable: false },
         { title: 'Status', key: 'status', sortable: false }
       ],
-      currentBranch: useAuthStore().getCurrentUser()?.branch
+      currentBranch: useAuthStore().getCurrentUser?.branch
     }
   },
   getters: {

@@ -1,6 +1,6 @@
-import type { Ingredient } from '@/views/Ingredient/types/ingredient'
+import type { Ingredient } from '@/pages/Ingredient/types/ingredient'
 import type { Inventory } from './inventory'
-import type { Employee } from '@/views/Employee/types/employee'
+import type { Employee } from '@/pages/Employee/types/employee'
 
 export type ReplenishmentItem = {
   id?: number

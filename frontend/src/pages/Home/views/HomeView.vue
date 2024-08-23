@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { type monthsWithNum, getMonthAbbreviation } from '@/utils/date'
+import { monthsWithNum, getMonthAbbreviation } from '@/utils/date'
 import CardShort from '../components/CardShort.vue'
 import ChartBox from '../components/ChartBox.vue'
 // import TopSales from '../components/TopSalesCard.vue'
@@ -29,7 +29,7 @@ onMounted(() => {
         <v-spacer></v-spacer>
         <v-col class="text-end pa-0 ma-0">
           <v-chip rounded size="large" color="orange" prepend-icon="mdi-account">{{
-            auth.getCurrentUser()?.role.toUpperCase()
+            auth.getCurrentUser?.role.toUpperCase()
           }}</v-chip>
         </v-col>
         <v-col cols="12">

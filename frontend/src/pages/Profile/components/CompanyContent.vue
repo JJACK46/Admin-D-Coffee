@@ -104,7 +104,7 @@ import CardProfile from './CardProfile.vue'
 import ChartBox from '@/pages/Home/components/ChartBox.vue'
 import { getMonthAbbreviation } from '@/utils/date'
 const store = useProfileStore()
-const user = store.auth.getCurrentUser()
+const user = store.auth.getCurrentUser
 const auth = useAuthStore()
 const imagePath = `${baseURLImage}/employees/${user?.imageUrl}`
 </script>

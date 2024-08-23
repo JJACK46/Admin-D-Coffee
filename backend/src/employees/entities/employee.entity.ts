@@ -5,14 +5,12 @@ import { Payroll } from 'src/payroll/entities/payroll.entity';
 import { Receipt } from 'src/receipts/entities/receipt.entity';
 import { Replenishment } from 'src/replenishment/entities/replenishment.entity';
 import { StockTaking } from 'src/stock-taking/entities/stock-taking.entity';
-import { User } from 'src/users/entities/user.entity';
 import {
   Column,
   Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 

@@ -1,4 +1,4 @@
-import type { Ingredient } from '@/views/Ingredient/types/ingredient'
+import type { Ingredient } from '@/pages/Ingredient/types/ingredient'
 
 export type Inventory = {
   id?: number

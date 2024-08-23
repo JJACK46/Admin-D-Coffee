@@ -3,7 +3,7 @@ import { reactive, ref } from 'vue'
 import { useInventoryStore } from './inventory'
 import { defaultInventoryItem, type Inventory, type InventoryItem } from '../types/inventory'
 import { useAuthStore } from '@/stores/auth'
-import type { Ingredient } from '@/views/Ingredient/types/ingredient'
+import type { Ingredient } from '@/pages/Ingredient/types/ingredient'
 import type { StockTaking, StockTakingItem } from '../types/stockTaking'
 import { StockTakingService } from '@/services/stockTaking'
 import { InventoryService } from '@/services/inventory'
@@ -34,7 +34,7 @@ export const useStockTakingStore = defineStore('stock-taking', {
   },
   getters: {
     getCurrentInventoryTitle: (state) => state.storeInventory.selectedBranch?.name,
-    getCurrentEmpFullName: (state) => state.auth.getCurrentUser()?.fullName
+    getCurrentEmpFullName: (state) => state.auth.getCurrentUser?.fullName
   },
   actions: {
     async fetchFilterStockTaking() {
@@ -106,7 +106,7 @@ export const useStockTakingStore = defineStore('stock-taking', {
         //record
         if (status === 200) {
           const stockTaking: StockTaking = {
-            employeeId: this.auth.getCurrentUser()?.employeeId!,
+            employeeId: this.auth.getCurrentUser?.employeeId!,
             inventoryId: inventory.id!,
             createdDate: getDateNowString(),
             stockTakingItems: inventory.inventoryItems.map((item, index) => {

@@ -66,7 +66,7 @@ export const useProfileStore = defineStore('profile', {
   actions: {
     setupDTO() {
       this.profileDTO = {
-        userId: this.auth.getCurrentUser()?.id!,
+        userId: this.auth.getCurrentUser?.id!,
         month: new Date().getMonth() + 1,
         year: new Date().getFullYear()
       }
@@ -76,15 +76,15 @@ export const useProfileStore = defineStore('profile', {
     },
     async fetchCustomerReceipts() {
       this.receipts = await ReceiptService.getAllWhereCustomer(
-        this.auth.getCurrentUser()?.customerId!
+        this.auth.getCurrentUser?.customerId!
       )
     },
     async fetchCustomer() {
-      const cusId = this.auth.getCurrentUser()?.customerId ?? 0
+      const cusId = this.auth.getCurrentUser?.customerId ?? 0
       this.customer = await CustomerService.getById(cusId)
     },
     async fetchEmployee() {
-      const empId = this.auth.getCurrentUser()?.employeeId ?? 0
+      const empId = this.auth.getCurrentUser?.employeeId ?? 0
       this.employee = await EmployeeService.getById(empId)
     },
     async fetchSlips() {
@@ -92,7 +92,7 @@ export const useProfileStore = defineStore('profile', {
     },
     async fetchAttendance() {
       this.attendanceRecord = await AttendanceService.getAllWhereEmployee(
-        this.auth.getCurrentUser()?.id!
+        this.auth.getCurrentUser?.id!
       )
     }
   }

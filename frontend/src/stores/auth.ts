@@ -2,10 +2,9 @@ import router from '@/router'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { AuthService } from '@/services/auth'
-import { useAttendanceStore } from '@/pages/Attendance/stores/attendance'
-import { ROLE_ADMIN, ROLE_CUSTOMER, ROLE_EMPLOYEE, ROLE_MANAGER } from '@/router/enum'
+import { Role } from '@/router/enum'
 
-export interface UserPayload {
+export interface UserProfile {
   branch: {
     id: number
     name: string
@@ -19,42 +18,53 @@ export interface UserPayload {
   username: string
 }
 
-type Payload = {
-  user: UserPayload
-  access_token: string
-}
-
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    user: ref<UserPayload | null>(),
+    user: ref<UserProfile | null>(null),
     showAppBar: ref(true),
     isTokenExpired: ref(false),
     errorMessage: ref('')
   }),
+  getters: {
+    getCurrentUser: (s) => s.user,
+    getRole: (s) => s.user?.role
+  },
   actions: {
     async signIn(username: string, password: string): Promise<boolean> {
       try {
-        const res: Payload = await AuthService.signIn(username, password)
-        localStorage.setItem('user', JSON.stringify(res.user))
+        const res = await AuthService.signIn(username, password)
+        // localStorage.setItem('user', JSON.stringify(res.user))
         localStorage.setItem('access_token', res.access_token)
         this.isTokenExpired = false
-        this.user = res.user
+        // this.user = res.user
         await this.checkBeforePush()
         this.showAppBar = true
-        if (res.user.role !== 'customer') {
-          useAttendanceStore().openDialog()
-        }
+        // if (res.user.role !== 'customer') {
+        //   useAttendanceStore().openDialog()
+        // }
+        this.getProfile()
         return true
       } catch (error) {
         return false
       }
     },
-    getCurrentUser(): UserPayload | undefined {
-      // return JSON.parse(localStorage.getItem('user') as string)
-      return
+    async getProfile() {
+      const res: UserProfile = await AuthService.getProfile()
+      if (!res) {
+        return
+      }
+      this.user = res
     },
-    isAuthenticated(): boolean {
-      return localStorage.getItem('user') !== null && !this.isTokenExpired
+    // async getCurrentUser(): Promise<UserPayload | null> {
+    //   // return JSON.parse(localStorage.getItem('user') as string)
+    // },
+    async isAuthenticated(): Promise<boolean> {
+      // return localStorage.getItem('user') !== null && !this.isTokenExpired
+      const res = await AuthService.getProfile()
+      if (!res) {
+        return false
+      }
+      return true
     },
     async isAuthorized(routeRoles: string[]): Promise<boolean> {
       // const userPayloadString = localStorage.getItem('user')
@@ -81,40 +91,40 @@ export const useAuthStore = defineStore('auth', {
     },
     async logout(isTokenExpired?: boolean): Promise<void> {
       this.user = null
-      await localStorage.clear()
+      localStorage.clear()
       router.replace('/login')
       this.isTokenExpired = isTokenExpired ?? false
       this.showAppBar = false
     },
     async checkBeforePush() {
       switch (this.user?.role) {
-        case ROLE_ADMIN:
+        case Role.admin:
           await router.replace('/')
           break
-        case ROLE_MANAGER:
+        case Role.manager:
           await router.replace('/home-manager')
           break
-        case ROLE_EMPLOYEE:
+        case Role.employee:
           await router.replace('/home-employee')
           break
-        case ROLE_CUSTOMER:
+        case Role.customer:
           await router.replace('/home-customer')
           break
         default:
           await router.replace('/pos')
       }
     },
-    isCustomer(): boolean {
-      return this.getCurrentUser()?.role === ROLE_CUSTOMER
+    isCustomer() {
+      return this.user?.role === Role.customer
     },
-    isAdmin(): boolean {
-      return this.getCurrentUser()?.role === ROLE_ADMIN
+    isAdmin() {
+      return this.user?.role === Role.admin
     },
-    isEmployee(): boolean {
-      return this.getCurrentUser()?.role === ROLE_EMPLOYEE
+    isEmployee() {
+      return this.user?.role === Role.employee
     },
-    isManager(): boolean {
-      return this.getCurrentUser()?.role === ROLE_MANAGER
+    isManager() {
+      return this.user?.role === Role.manager
     }
   }
 })

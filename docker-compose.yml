@@ -1,0 +1,52 @@
+services:
+  # frontend:
+  #   build:
+  #     context: frontend
+  #   ports:
+  #     - "5173:5173"
+  #   depends_on:
+  #     - backend
+
+  # backend:
+  #   build:
+  #     context: backend
+  #   restart: always
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     DATABASE_HOST: db
+  #     DATABASE_PORT: 3306
+  #     DATABASE_USER: root
+  #     DATABASE_PASSWORD: example
+  #     DATABASE_NAME: dbcoffee
+
+  db:
+    image: mariadb:lts
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: dbcoffee
+    volumes:
+      - db_data:/var/lib/mysql
+    # Use the following if you have init scripts
+    # build:
+    #   context: ./mysql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+
+volumes:
+  db_data:

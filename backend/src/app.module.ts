@@ -41,12 +41,12 @@ import { ConfigModule } from '@nestjs/config';
     //   logging: true, //true for check query and error
     // }),
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'mariadb',
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '',
-      database: 'dcoffee',
+      password: 'example',
+      database: 'dbcoffee',
       autoLoadEntities: true,
       synchronize: true,
       logging: true,

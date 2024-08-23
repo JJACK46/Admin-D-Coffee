@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import { useHomeStore } from '../store/home'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <v-container fluid class="h-100">

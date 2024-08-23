@@ -18,21 +18,16 @@ export class AuthService {
       throw new UnauthorizedException('Password incorrect');
     }
     const payload = {
-      sub: user.id,
+      id: user.id,
       username: user.username,
+      imageUrl: user.imageUrl,
       role: user.role.name,
+      employeeId: user.employeeId,
+      customerId: user.customerId,
+      fullName: user.fullName,
+      branch: user.employee?.branch ?? null,
     };
     return {
-      // user: {
-      //   id: user.id,
-      //   username: user.username,
-      //   imageUrl: user.imageUrl,
-      //   role: user.role.name,
-      //   employeeId: user.employeeId,
-      //   customerId: user.customerId,
-      //   fullName: user.fullName,
-      //   branch: user.employee?.branch ?? null,
-      // },
       access_token: await this.jwtService.signAsync(payload),
     };
   }

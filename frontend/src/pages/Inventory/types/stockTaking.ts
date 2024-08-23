@@ -1,5 +1,5 @@
 import type { Inventory } from './inventory'
-import type { Employee } from '@/views/Employee/types/employee'
+import type { Employee } from '@/pages/Employee/types/employee'
 
 export type StockTaking = {
   id?: number

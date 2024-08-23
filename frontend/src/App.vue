@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import MainDrawer from './components/MainDrawer.vue'
-import { useAuthStore } from './stores/auth'
 import { useMainDrawerStore } from './stores/drawer'
 import { useDisplay } from 'vuetify'
 import { watch } from 'vue'
-import { RouterView } from 'vue-router'
-import AttendanceDialog from './pages/Attendance/components/AttendanceDialog.vue'
-import MainAppBar from './components/MainAppBar.vue'
 import MainLayout from './layouts/MainLayout.vue'
 
-const auth = useAuthStore()
 const drawer = useMainDrawerStore()
 
 watch(useDisplay().mdAndDown, () => {

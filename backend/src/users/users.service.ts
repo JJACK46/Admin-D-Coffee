@@ -69,14 +69,16 @@ export class UsersService {
   }
 
   findOneByName(username: string) {
-    return this.repo.findOneOrFail({
-      where: { username: username },
-      relations: {
-        employee: { branch: true },
-        customer: true,
-        role: true,
-      },
-    });
+    try {
+      return this.repo.findOne({
+        where: { username: username },
+        relations: {
+          role: true,
+        },
+      });
+    } catch (error) {
+      throw new Error('' + error);
+    }
   }
 
   async update(id: number, dto: UpdateUserDto) {

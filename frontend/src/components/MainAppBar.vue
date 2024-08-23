@@ -3,7 +3,7 @@ import { baseURLImage } from '@/services/http'
 import { useAuthStore } from '@/stores/auth'
 import { useMainDrawerStore } from '@/stores/drawer'
 import { useNotificationStore } from '@/stores/notifications'
-import { ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useDisplay, useTheme } from 'vuetify'
 
 const auth = useAuthStore()
@@ -11,10 +11,6 @@ const drawer = useMainDrawerStore()
 const notification = useNotificationStore()
 const toggleNotifications = ref(false)
 const realTimeData = ref('')
-
-setInterval(() => {
-  realTimeData.value = new Date().toLocaleTimeString('th-TH', { hour12: false })
-}, 1000)
 
 function closeNotificationDialog() {
   notification.setRead()
@@ -37,6 +33,20 @@ watch(
     colorAppBar.value = val ? 'fifth' : 'primary'
   }
 )
+
+const useCurrentTime = () => {
+  const currentTime = ref(new Date().toLocaleTimeString('th-TH', { hour12: false }))
+  const updateCurrentTime = () => {
+    currentTime.value = new Date().toLocaleTimeString('th-TH', { hour12: false })
+  }
+  const updateTimeInterval = setInterval(updateCurrentTime, 1000)
+  onBeforeUnmount(() => {
+    clearInterval(updateTimeInterval)
+  })
+  return currentTime
+}
+
+const currentTime = useCurrentTime()
 
 const fieldAppMenu = [
   { icon: 'mdi-account-outline', title: 'Profile', path: '/profile' },
@@ -80,7 +90,7 @@ const fieldAppMenu = [
     </template>
     <template #append>
       <div>
-        {{ realTimeData }}
+        {{ currentTime }}
       </div>
       <div>
         <v-btn :icon="notification.getNotificationIcon" @click="notification.setRead()"> </v-btn>
@@ -133,7 +143,7 @@ const fieldAppMenu = [
       <v-menu name="profile" :close-on-content-click="false">
         <template #activator="{ props }">
           <v-avatar v-bind="props" class="mr-2" style="cursor: pointer">
-            <v-img :src="`${baseURLImage}/employees/${auth.getCurrentUser()?.imageUrl}`">
+            <v-img :src="`${baseURLImage}/employees/${auth.getCurrentUser?.imageUrl}`">
               <template #error>
                 <div style="background-color: #212121; width: 100%; height: 100%"></div>
               </template> </v-img

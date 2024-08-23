@@ -72,7 +72,7 @@ import CardProfile from './CardProfile.vue'
 
 const auth = useAuthStore()
 const receipt = useReceiptStore()
-const user = auth.getCurrentUser()
+const user = auth.getCurrentUser
 const profile = useProfileStore()
 const loader = useLoadingStore()
 const searchText = ref()

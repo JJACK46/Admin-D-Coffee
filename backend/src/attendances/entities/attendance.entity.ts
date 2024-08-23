@@ -1,4 +1,4 @@
-import { Exclude, Expose } from 'class-transformer';
+import { Expose } from 'class-transformer';
 import { Employee } from 'src/employees/entities/employee.entity';
 import {
   Column,
@@ -18,7 +18,6 @@ export class Attendance {
 
   @ManyToOne(() => Employee, (emp) => emp.attendances, { eager: true })
   @JoinTable()
-  @Exclude()
   employee: Employee;
 
   @Column()

@@ -33,7 +33,6 @@ router.beforeEach((to, from, next) => {
         next({ name: 'forbidden' })
       } else {
         // Continue to the requested route
-        // next(authStore.methods.hasRole('admin') ? { name: 'home' } : '/pos')
         next()
       }
     }

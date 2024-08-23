@@ -5,7 +5,6 @@ import { adminNavItems, employeeNavItems, managerNavItems } from '@/router/nav-i
 import { computed } from 'vue'
 
 const auth = useAuthStore()
-const navHandle = useMainDrawerStore()
 
 // const routes = ref<RouteRecordNormalized[]>([]);
 

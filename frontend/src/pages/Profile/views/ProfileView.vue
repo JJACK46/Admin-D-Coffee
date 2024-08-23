@@ -4,7 +4,6 @@ import { useProfileStore } from '../stores/profile'
 import CustomerContent from '../components/CustomerContent.vue'
 import CompanyContent from '../components/CompanyContent.vue'
 import { useAuthStore } from '@/stores/auth'
-import { useRouter } from 'vue-router'
 
 const store = useProfileStore()
 const auth = useAuthStore()
@@ -20,11 +19,6 @@ onMounted(() => {
     store.fetchEmployee()
   }
 })
-const router = useRouter()
-
-const goBack = () => {
-  router.go(-1)
-}
 </script>
 
 <template>
