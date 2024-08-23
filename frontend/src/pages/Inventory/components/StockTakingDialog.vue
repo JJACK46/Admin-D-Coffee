@@ -39,7 +39,7 @@ function handleHighlight(min: number, bal: number) {
           </v-col>
           <v-spacer></v-spacer>
           <v-col>
-            <h3>Employee : {{ auth.getCurrentUser()?.fullName }}</h3>
+            <h3>Employee : {{ auth.getCurrentUser?.fullName }}</h3>
             <h4>
               {{ `Current date: ${getDateNowString()}` }}
             </h4>

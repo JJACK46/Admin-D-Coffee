@@ -59,7 +59,7 @@ export class UsersService {
 
   findOneById(id: number) {
     return this.repo.findOneOrFail({
-      where: { id: id },
+      where: { id },
       relations: {
         employee: { branch: true },
         customer: true,
@@ -71,8 +71,10 @@ export class UsersService {
   findOneByName(username: string) {
     try {
       return this.repo.findOne({
-        where: { username: username },
+        where: { username },
         relations: {
+          employee: { branch: true },
+          customer: true,
           role: true,
         },
       });

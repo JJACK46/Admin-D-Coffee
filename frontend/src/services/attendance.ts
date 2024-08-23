@@ -1,4 +1,4 @@
-import type { Attendance, AttendanceDto } from '@/views/Attendance/types/attendance'
+import type { Attendance, AttendanceDto } from '@/pages/Attendance/types/attendance'
 import http from './http'
 
 export class AttendanceService {

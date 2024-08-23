@@ -1,4 +1,4 @@
-import type { RevenueDTO } from '@/views/Home/types/revenue'
+import type { RevenueDTO } from '@/pages/Home/types/revenue'
 import http from './http'
 
 export class ReportService {

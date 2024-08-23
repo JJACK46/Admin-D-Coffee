@@ -34,9 +34,10 @@ export const useInventoryStore = defineStore('inventory', {
     getIngredients: (s) => s.availableIngredient
   },
   actions: {
-    getDataCSV() {
+    getDataCSV(): Record<string, any>[] {
       const items = this.selectedBranch?.inventory?.inventoryItems
-      return items?.map((item) => ({
+      if (!items) return [{}]
+      return items.map((item) => ({
         ID: item.id,
         Name: item.ingredient?.name,
         MinimumBalance: item.minBalance,

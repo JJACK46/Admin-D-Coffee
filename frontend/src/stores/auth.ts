@@ -61,6 +61,7 @@ export const useAuthStore = defineStore('auth', {
     async isAuthenticated(): Promise<boolean> {
       // return localStorage.getItem('user') !== null && !this.isTokenExpired
       const res = await AuthService.getProfile()
+      this.user = res
       if (!res) {
         return false
       }

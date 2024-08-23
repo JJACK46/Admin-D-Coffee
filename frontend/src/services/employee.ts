@@ -1,5 +1,5 @@
 import http from './http'
-import type { Employee } from '@/views/Employee/types/employee'
+import type { Employee } from '@/pages/Employee/types/employee'
 
 export class EmployeeService {
   private static path = '/employees'

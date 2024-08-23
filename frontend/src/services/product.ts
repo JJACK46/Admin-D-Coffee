@@ -1,4 +1,4 @@
-import type { Product } from '@/views/Product/types/product'
+import type { Product } from '@/pages/Product/types/product'
 import http from './http'
 
 export class ProductService {

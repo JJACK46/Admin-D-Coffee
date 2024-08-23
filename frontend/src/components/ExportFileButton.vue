@@ -6,7 +6,7 @@
       <v-menu activator="parent">
         <v-card>
           <v-list>
-            <v-list-item @click="$props.callbackPdf">.PDF</v-list-item>
+            <v-list-item @click="callbackPdf">.PDF</v-list-item>
             <v-list-item
               v-if="dataCSV"
               @click="exportDataToCSV(dataCSV, `${filenameCSV}-${new Date().toISOString()}.csv`)"
@@ -23,7 +23,7 @@
 import { exportDataToCSV } from '@/utils/csv'
 
 defineProps<{
-  callbackPdf: Function
+  callbackPdf: () => void
   dataCSV?: Record<string, any>[]
   filenameCSV?: string
 }>()

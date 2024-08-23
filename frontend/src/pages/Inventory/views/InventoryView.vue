@@ -27,10 +27,10 @@
           </v-select>
         </template>
         <template #actions>
-          <span class="d-flex justify-end w-100 px-3 pb-3">
+          <span class="d-flex justify-end w-100 px-3 pb-3 ga-2">
             <v-menu>
               <template #activator="{ props }">
-                <v-btn prepend-icon="mdi-clock" v-bind="props">History</v-btn>
+                <v-btn prepend-icon="mdi-clock" v-bind="props" variant="flat">History</v-btn>
               </template>
               <v-list style="cursor: pointer">
                 <v-list-item title="Stock-taking" to="/stock-taking-history" target="_blank">
@@ -46,7 +46,9 @@
             </v-menu>
             <v-menu>
               <template #activator="{ props }">
-                <v-btn prepend-icon="mdi-open-in-app" v-bind="props">Quick Actions </v-btn>
+                <v-btn prepend-icon="mdi-open-in-app" v-bind="props" variant="flat"
+                  >Quick Actions
+                </v-btn>
               </template>
               <v-list style="cursor: pointer">
                 <v-list-item @click="storeStock.openDialog()" class="listItemHover"
@@ -96,13 +98,11 @@ import { requiredRule } from '@/utils/rules'
 import { useReplenishmentStore } from '../store/replenishment'
 import { useAuthStore } from '@/stores/auth'
 import ExportFileButton from '@/components/ExportFileButton.vue'
-import { useLoadingStore } from '@/stores/loading'
 import { Role } from '@/router/enum'
 const store = useInventoryStore()
 const storeStock = useStockTakingStore()
 const storeRep = useReplenishmentStore()
 const auth = useAuthStore()
-const loader = useLoadingStore()
 const isAdmin = ref()
 
 onMounted(async () => {

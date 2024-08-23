@@ -3,14 +3,13 @@ import { baseURLImage } from '@/services/http'
 import { useAuthStore } from '@/stores/auth'
 import { useMainDrawerStore } from '@/stores/drawer'
 import { useNotificationStore } from '@/stores/notifications'
-import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { onBeforeUnmount, ref, watch } from 'vue'
 import { useDisplay, useTheme } from 'vuetify'
 
 const auth = useAuthStore()
 const drawer = useMainDrawerStore()
 const notification = useNotificationStore()
 const toggleNotifications = ref(false)
-const realTimeData = ref('')
 
 function closeNotificationDialog() {
   notification.setRead()
@@ -65,7 +64,10 @@ const fieldAppMenu = [
     </template>
 
     <template #title>
-      <v-list-item title="Enterprise App" prepend-avatar="d-coffee-logo.png" class="pa-0">
+      <v-list-item title="Enterprise App" class="pa-0">
+        <template #prepend>
+          <img :src="`d-coffee-logo.png`" width="52" class="pr-3" />
+        </template>
         <template #title>
           <h4 v-if="auth.isCustomer()">D-Coffee Shop</h4>
           <h4 v-else>Enterprise App</h4>
@@ -123,6 +125,7 @@ const fieldAppMenu = [
                         class="ml-2"
                         size="small"
                         flat
+                        variant="text"
                         icon="mdi-close"
                         @click="notification.items.splice(index, 1)"
                       ></v-btn>

@@ -1,4 +1,4 @@
-import type { Replenishment, ReplenishmentItem } from '@/views/Inventory/types/replenishment'
+import type { Replenishment, ReplenishmentItem } from '@/pages/Inventory/types/replenishment'
 import http from './http'
 
 export class ReplenishmentService {
@@ -12,7 +12,7 @@ export class ReplenishmentService {
       const res = await http.get(`${this.path}/${year}/${month}`)
       return res.data
     } catch (error) {
-      throw new Error()
+      console.error(error)
     }
   }
   public static async create(item: Replenishment) {
@@ -20,7 +20,7 @@ export class ReplenishmentService {
       const res = await http.post(this.path, item)
       return res.status
     } catch (error) {
-      throw new Error()
+      console.error(error)
     }
   }
   public static async delete(index: number) {

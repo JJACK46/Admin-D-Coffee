@@ -1,4 +1,4 @@
-import type { Slip } from '@/views/Payroll/types/slip'
+import type { Slip } from '@/pages/Payroll/types/slip'
 import http from './http'
 
 export class PayrollService {
