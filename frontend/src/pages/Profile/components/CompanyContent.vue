@@ -97,7 +97,7 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth'
-import { useProfileStore } from '../stores/profile'
+import { useProfileStore } from '@/stores/profile'
 import CardTable from './CardTable.vue'
 import { baseURLImage } from '@/services/http'
 import CardProfile from './CardProfile.vue'

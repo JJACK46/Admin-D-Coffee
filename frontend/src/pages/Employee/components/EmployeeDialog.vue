@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useEmployeeStore } from '../stores/employee'
-import { defaultGenders } from '../types/gender'
-import { defaultJobTitles } from '../types/jobTitle'
+import { useEmployeeStore } from '@/stores/employee'
+import { defaultGenders } from '../../../types/gender'
+import { defaultJobTitles } from '../../../types/jobTitle'
 import { reactive, ref, watch } from 'vue'
 import { requiredRule } from '@/utils/rules'
 import DatePickerDialog from '@/components/DatePickerDialog.vue'
 import type { MaskaDetail, MaskOptions } from 'maska'
-import type { Employee } from '../types/employee'
+import type { Employee } from '../../../types/employee'
 import { computed } from 'vue'
 const store = useEmployeeStore()
 const optionsMask: MaskOptions = {

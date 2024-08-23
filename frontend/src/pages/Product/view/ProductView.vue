@@ -28,8 +28,9 @@
     </template>
     <template #imageName="{ item }">
       <v-img
-        v-if="item.imageName"
+        width="100"
         height="100"
+        v-if="item.imageName"
         :src="`${baseURLImage}/products/${item.imageName}`"
         :alt="'Image of ' + item.imageName"
       ></v-img>
@@ -44,7 +45,7 @@
 
 <script setup lang="ts">
 import TableLayout from '@/components/MainTable.vue'
-import { useProductStore } from '../store/product'
+import { useProductStore } from '@/stores/product'
 import ProductDialog from '../components/ProductDialog.vue'
 import { baseURLImage } from '@/services/http'
 import SearchTableField from '@/components/SearchTableField.vue'

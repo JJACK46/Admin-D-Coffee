@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Receipt } from '@views/Receipt/types/receipt'
+import type { Receipt } from '@/types/receipt'
 import { computed } from 'vue'
 
 const headers = [

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useLoadingStore } from '@/stores/loading'
-import { useProductStore } from '../store/product'
+import { useProductStore } from '@/stores/product'
 import { baseURLImage } from '@/services/http'
 const store = useProductStore()
 const loading = useLoadingStore()

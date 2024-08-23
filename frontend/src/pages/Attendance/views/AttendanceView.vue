@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TableLayout from '@/components/MainTable.vue'
-import { useAttendanceStore } from '../stores/attendance'
+import { useAttendanceStore } from '@/stores/attendance'
 import { ref } from 'vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 

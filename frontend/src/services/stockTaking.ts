@@ -1,4 +1,4 @@
-import type { StockTaking } from '@/pages/Inventory/types/stockTaking'
+import type { StockTaking } from '@/types/stockTaking'
 import http from './http'
 
 export class StockTakingService {

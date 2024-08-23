@@ -1,4 +1,4 @@
-import type { ProfileDTO } from '@/pages/Profile/types/profile'
+import type { ProfileDTO } from '@/types/profile'
 import http from './http'
 
 export class ProfileServices {

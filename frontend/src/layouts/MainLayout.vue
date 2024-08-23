@@ -11,8 +11,8 @@
         }"
       >
       </span> -->
-    <MainAppBar v-if="auth.showAppBar" />
-    <MainDrawer v-if="auth.showAppBar" />
+    <MainAppBar />
+    <MainDrawer />
     <v-main app class="overflow-y-auto">
       <RouterView />
     </v-main>

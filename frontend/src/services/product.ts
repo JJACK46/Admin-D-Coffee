@@ -1,4 +1,4 @@
-import type { Product } from '@/pages/Product/types/product'
+import type { Product } from '@/types/product'
 import http from './http'
 
 export class ProductService {
@@ -8,7 +8,7 @@ export class ProductService {
       const res = await http.get(this.path)
       return res.data
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
@@ -24,7 +24,7 @@ export class ProductService {
       })
       return res.data
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
@@ -33,7 +33,7 @@ export class ProductService {
       const res = await http.delete(`${this.path}/${index}`)
       return res.data
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
   public static async getById(index: number) {
@@ -41,7 +41,7 @@ export class ProductService {
       const res = await http.get(`${this.path}/${index}`)
       return res.data
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
   public static async update(item: Product, files: File[]) {
@@ -56,7 +56,7 @@ export class ProductService {
       })
       return res.data
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 }

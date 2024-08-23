@@ -49,7 +49,7 @@
 <script setup lang="ts">
 import TableLayout from '@/components/MainTable.vue'
 import PromotionDialog from '../components/PromotionDialog.vue'
-import { usePromotionStore } from '../store/promotion'
+import { usePromotionStore } from '@/stores/promotion'
 import { ref } from 'vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 

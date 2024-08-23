@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { requiredRule } from '@/utils/rules'
-import { useCustomerStore } from '../store/customer'
+import { useCustomerStore } from '@/stores/customer'
 import DatePickerDialog from '@/components/DatePickerDialog.vue'
 import type { MaskaDetail } from 'maska'
 import { telOptions } from '@/utils/maska'

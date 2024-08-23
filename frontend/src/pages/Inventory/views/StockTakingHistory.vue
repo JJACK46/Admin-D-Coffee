@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useStockTakingStore } from '../store/stockTaking'
+import { useStockTakingStore } from '../../../stores/stockTaking'
 import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import ExportFileButton from '@/components/ExportFileButton.vue'

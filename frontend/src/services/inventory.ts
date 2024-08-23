@@ -1,5 +1,5 @@
 import http from './http'
-import type { Inventory } from '@/pages/Inventory/types/inventory'
+import type { Inventory } from '@/types/inventory'
 
 export class InventoryService {
   private static path = '/inventory'

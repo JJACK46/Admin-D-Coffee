@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { VForm } from 'vuetify/components'
-import { useBillStore } from '@/views/Bill/stores/bill'
+import { useBillStore } from '@/stores/bill'
 import { requiredRule, rulePositiveNumberOnly } from '@/utils/rules'
 import DatePickerDialog from '@/components/DatePickerDialog.vue'
 

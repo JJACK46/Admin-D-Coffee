@@ -61,12 +61,12 @@
 <script setup lang="ts">
 import { baseURLImage } from '@/services/http'
 import { useAuthStore } from '@/stores/auth'
-import { useProfileStore } from '../stores/profile'
+import { useProfileStore } from '@/stores/profile'
 import { useLoadingStore } from '@/stores/loading'
 import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'
-import { useReceiptStore } from '@/pages/Receipt/stores/receipt'
+import { useReceiptStore } from '@/stores/receipt'
 import PreviewReceipt from '@/pages/Receipt/components/PreviewReceipt.vue'
 import CardProfile from './CardProfile.vue'
 

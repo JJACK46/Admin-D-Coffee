@@ -4,7 +4,7 @@ import { monthsWithNum, getMonthAbbreviation } from '@/utils/date'
 import CardShort from '../components/CardShort.vue'
 import ChartBox from '../components/ChartBox.vue'
 // import TopSales from '../components/TopSalesCard.vue'
-import { useHomeStore } from '../store/home'
+import { useHomeStore } from '../../../stores/home'
 import { useAuthStore } from '@/stores/auth'
 import { useLoadingStore } from '@/stores/loading'
 

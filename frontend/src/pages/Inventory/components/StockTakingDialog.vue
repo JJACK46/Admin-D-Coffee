@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
-import { useStockTakingStore } from '../store/stockTaking'
-import { useInventoryStore } from '../store/inventory'
+import { useStockTakingStore } from '../../../stores/stockTaking'
+import { useInventoryStore } from '../../../stores/inventory'
 import { useAuthStore } from '@/stores/auth'
 import WarningDialog from '../components/WarningDialog.vue'
 import { getDateNowString } from '@/utils/date'

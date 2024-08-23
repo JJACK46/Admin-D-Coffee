@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { useLoadingStore } from '@/stores/loading'
-import { useAttendanceStore } from '../stores/attendance'
+import { useAttendanceStore } from '../../../stores/attendance'
 
 const attend = useAttendanceStore()
 const loader = useLoadingStore()

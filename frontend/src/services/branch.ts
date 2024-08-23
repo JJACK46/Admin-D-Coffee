@@ -1,4 +1,4 @@
-import type { Branch } from '@/pages/Branch/types/branch'
+import type { Branch } from '@/types/branch'
 import http from './http'
 
 export class BranchService {

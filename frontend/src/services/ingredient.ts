@@ -1,4 +1,4 @@
-import type { Ingredient } from '@/pages/Ingredient/types/ingredient'
+import type { Ingredient } from '@/types/ingredient'
 import http from './http'
 
 export class IngredientService {

@@ -32,6 +32,7 @@ export class AuthService {
         if (axiosError.response) {
           const { data } = axiosError.response
           useAuthStore().errorMessage = data.message
+          return null
         }
       }
       throw new Error('An error occurred during get profile')

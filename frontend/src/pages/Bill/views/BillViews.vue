@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ExportFileButton from '@/components/ExportFileButton.vue'
-import { useBillStore } from '../stores/bill'
+import { useBillStore } from '@/stores/bill'
 import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useIngredientStore } from '../stores/ingredient'
-import { defaultUnitTypes } from '../types/ingredient'
+import { useIngredientStore } from '@/stores/ingredient'
+import { defaultUnitTypes } from '@/types/ingredient'
 
 const store = useIngredientStore()
 const formComplete = ref<boolean>()

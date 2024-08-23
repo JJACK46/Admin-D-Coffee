@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePayrollStore } from '../stores/payroll'
+import { usePayrollStore } from '@/stores/payroll'
 import { useLoadingStore } from '@/stores/loading'
 import SlipView from '../components/SlipView.vue'
 import SearchTableField from '@/components/SearchTableField.vue'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { baseURLImage } from '@/services/http'
-import type { Product } from '@/views/Product/types/product'
-import { usePosStore } from '../store/pos'
+import type { Product } from '@/types/product'
+import { usePosStore } from '@/stores/pos'
 
 const store = usePosStore()
 

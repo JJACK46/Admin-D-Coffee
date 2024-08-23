@@ -31,10 +31,10 @@ export class ProductsController {
         },
       }),
       fileFilter: (req, file, callback) => {
-        const allowedFileTypes = ['image/jpeg', 'image/png'];
+        const allowedFileTypes = ['image/jpeg', 'image/png', 'image/webp'];
         if (!allowedFileTypes.includes(file.mimetype)) {
           return callback(
-            new Error('Only JPEG and PNG files are allowed'),
+            new Error('Only JPEG, PNG and WEBP files are allowed'),
             false,
           );
         }

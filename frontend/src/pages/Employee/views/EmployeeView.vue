@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
 import TableLayout from '@/components/MainTable.vue'
-import { useEmployeeStore } from '../stores/employee'
+import { useEmployeeStore } from '@/stores/employee'
 import EmployeeDialog from '../components/EmployeeDialog.vue'
 import { ref } from 'vue'
 import SearchTableField from '@/components/SearchTableField.vue'

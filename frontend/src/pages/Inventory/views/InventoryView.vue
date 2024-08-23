@@ -89,13 +89,13 @@
 
 <script setup lang="ts">
 import MainTable from '@/components/MainTable.vue'
-import { useInventoryStore } from '../store/inventory'
+import { useInventoryStore } from '../../../stores/inventory'
 import { onMounted, ref } from 'vue'
 import StockTakingDialog from '../components/StockTakingDialog.vue'
 import ReplenishmentDialog from '../components/ReplenishmentDialog.vue'
-import { useStockTakingStore } from '../store/stockTaking'
+import { useStockTakingStore } from '../../../stores/stockTaking'
 import { requiredRule } from '@/utils/rules'
-import { useReplenishmentStore } from '../store/replenishment'
+import { useReplenishmentStore } from '../../../stores/replenishment'
 import { useAuthStore } from '@/stores/auth'
 import ExportFileButton from '@/components/ExportFileButton.vue'
 import { Role } from '@/router/enum'

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePayrollStore } from '../stores/payroll'
+import { usePayrollStore } from '@/stores/payroll'
 import { useAuthStore } from '@/stores/auth'
 import { rulePositiveNumberOnly } from '@/utils/rules'
 import DatePickerDialog from '@/components/DatePickerDialog.vue'
@@ -61,11 +61,11 @@ const maskObject = reactive({})
               <v-col cols="12" class="py-8">
                 <h3>
                   บริษัท ดีคอฟฟี่ จำกัด สาขา :
-                  {{ store.tempSlip?.branch?.name ?? auth.getCurrentUser()?.branch.name }}
+                  {{ store.tempSlip?.branch?.name ?? auth.getCurrentUser?.branch.name }}
                 </h3>
                 <p>
                   D-Coffee Co., Ltd. Branch :
-                  {{ store.tempSlip?.branch?.name ?? auth.getCurrentUser()?.branch.name }}
+                  {{ store.tempSlip?.branch?.name ?? auth.getCurrentUser?.branch.name }}
                 </p>
               </v-col>
             </v-row>
@@ -218,7 +218,7 @@ const maskObject = reactive({})
           <v-btn color="primary" variant="flat" text="Save"></v-btn>
         </div>
         <div v-else>
-          <p>Verified & Paid by {{ auth.getCurrentUser()?.fullName }}</p>
+          <p>Verified & Paid by {{ auth.getCurrentUser?.fullName }}</p>
           <v-spacer class="mx-1"></v-spacer>
           <v-btn color="grey" variant="outlined" @click="store.closeSlipDialog()"> Cancel </v-btn>
           <v-btn color="primary" variant="flat"> Pay </v-btn>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DatePickerDialog from '@/components/DatePickerDialog.vue'
-import { usePromotionStore } from '../store/promotion.ts'
+import { usePromotionStore } from '@/stores/promotion.ts'
 import { requiredRule, rulePositiveNumberOnly } from '@/utils/rules.ts'
 import { ref } from 'vue'
 

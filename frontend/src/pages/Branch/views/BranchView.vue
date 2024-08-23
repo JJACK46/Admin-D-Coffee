@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import BranchDialog from '../components/BranchDialog.vue'
-import { useBranchStore } from '../stores/branch'
+import { useBranchStore } from '@/stores/branch'
 import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 

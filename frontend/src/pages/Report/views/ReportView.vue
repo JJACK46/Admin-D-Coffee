@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useLoadingStore } from '@/stores/loading'
-import { useReportStore } from '../stores/report'
+import { useReportStore } from '../../../stores/report'
 import { onMounted } from 'vue'
 
 const loader = useLoadingStore()

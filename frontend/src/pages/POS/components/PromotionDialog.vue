@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { usePosStore } from '../store/pos'
+import { usePosStore } from '@/stores/pos'
 import { requiredRule } from '@/utils/rules'
 
 const store = usePosStore()

@@ -1,4 +1,4 @@
-import type { User } from '@/pages/User/types/user'
+import type { User } from '@/types/user'
 import http from './http'
 
 export class UserService {

@@ -1,4 +1,4 @@
-import type { Bill } from '../types/Bill.ts'
+import type { Bill } from '../../../types/Bill.ts'
 
 export const mockBills: Bill[] = [
   {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import ItemCard from '../components/customer/ItemCard.vue'
-import { useHomeCustomerStore } from '../store/customer'
+import { useHomeCustomerStore } from '../../../stores/home-customer'
 import { baseURLImage } from '@/services/http'
 
 const store = useHomeCustomerStore()

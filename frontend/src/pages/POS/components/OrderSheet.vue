@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { requiredRule, rulePositiveNumberOnly } from '@/utils/rules'
-import { usePosStore } from '../store/pos'
+import { usePosStore } from '@/stores/pos'
 import { useDisplay } from 'vuetify'
 
 const store = usePosStore()

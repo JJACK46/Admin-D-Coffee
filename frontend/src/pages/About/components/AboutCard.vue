@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAboutStore } from '../store/about'
+import { useAboutStore } from '../../../stores/about'
 
 const store = useAboutStore()
 </script>

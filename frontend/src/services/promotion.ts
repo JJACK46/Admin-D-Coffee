@@ -1,4 +1,4 @@
-import type { Promotion } from '@/pages/Promotion/types/Promotion'
+import type { Promotion } from '@/types/Promotion'
 import http from './http'
 
 export class PromotionService {

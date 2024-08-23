@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useReceiptStore } from '../stores/receipt'
+import { useReceiptStore } from '@/stores/receipt'
 import ReceiptTable from './ReceiptSlip.vue'
 
 const store = useReceiptStore()

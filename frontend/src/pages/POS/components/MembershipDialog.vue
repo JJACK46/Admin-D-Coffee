@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { usePosStore } from '../store/pos'
+import { usePosStore } from '@/stores/pos'
 import { requiredRule } from '@/utils/rules'
 import { useLoadingStore } from '@/stores/loading'
 

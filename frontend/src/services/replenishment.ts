@@ -1,4 +1,4 @@
-import type { Replenishment, ReplenishmentItem } from '@/pages/Inventory/types/replenishment'
+import type { Replenishment, ReplenishmentItem } from '@/types/replenishment'
 import http from './http'
 
 export class ReplenishmentService {

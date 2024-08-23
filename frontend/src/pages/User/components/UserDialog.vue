@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
-import { useUserStore } from '../stores/user'
+import { useUserStore } from '@/stores/user'
 import { requiredRule } from '@/utils/rules'
 
 const store = useUserStore()
@@ -28,9 +28,9 @@ onMounted(() => {
 <template>
   <v-dialog v-model="store.dialogState" width="512" persistent>
     <v-card>
-      <h3 class="text-center pa-3">
+      <template #title>
         {{ store.formTitle }}
-      </h3>
+      </template>
       <v-divider class="mb-5"></v-divider>
       <v-form class="px-5" v-model="formComplete">
         <v-row>
@@ -40,15 +40,6 @@ onMounted(() => {
               variant="outlined"
               v-model="store.tempItem.username"
               label="Username"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12">
-            <v-text-field
-              :rules="[requiredRule]"
-              variant="outlined"
-              type="password"
-              v-model="store.tempItem.password"
-              label="Password"
             ></v-text-field>
           </v-col>
           <v-col cols="12">

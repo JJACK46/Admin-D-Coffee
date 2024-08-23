@@ -1,4 +1,4 @@
-import type { Receipt } from '@/pages/Receipt/types/receipt'
+import type { Receipt } from '@/types/receipt'
 import http from './http'
 
 export class ReceiptService {

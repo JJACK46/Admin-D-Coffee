@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Product } from '@/views/Product/types/product'
+import type { Product } from '@/types/product'
 import MenuCard from './MenuCard.vue'
 
 defineProps<{

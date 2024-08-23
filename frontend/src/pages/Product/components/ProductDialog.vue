@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { requiredRule, ruleFiles, rulePositiveNumberOnly } from '@/utils/rules'
-import { useProductStore } from '../store/product'
-import { typesOfProducts } from '../types/product'
+import { useProductStore } from '@/stores/product'
+import { typesOfProducts } from '../../../types/product'
 import { ref } from 'vue'
 
 const store = useProductStore()
@@ -33,7 +33,7 @@ const formComplete = ref<boolean>()
           </v-col>
           <v-col>
             <v-file-input
-              accept="image/png,image/jpeg"
+              accept="image/png,image/jpeg,image/webp"
               v-model="store.tempItem.files"
               hide-details
               variant="outlined"

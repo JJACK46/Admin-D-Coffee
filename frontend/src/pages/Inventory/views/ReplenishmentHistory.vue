@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TableLayout from '@/components/MainTable.vue'
-import { useReplenishmentStore } from '../store/replenishment'
+import { useReplenishmentStore } from '../../../stores/replenishment'
 import { onMounted, ref } from 'vue'
 import ExportFileButton from '@/components/ExportFileButton.vue'
 import SearchTableField from '@/components/SearchTableField.vue'

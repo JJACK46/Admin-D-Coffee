@@ -42,7 +42,7 @@
 
 <script setup lang="ts">
 import TableLayout from '@/components/MainTable.vue'
-import { useReceiptStore } from '../stores/receipt'
+import { useReceiptStore } from '@/stores/receipt'
 import PreviewReceipt from '../components/PreviewReceipt.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'

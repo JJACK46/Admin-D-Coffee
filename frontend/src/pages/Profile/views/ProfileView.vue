@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useProfileStore } from '../stores/profile'
+import { useProfileStore } from '@/stores/profile'
 import CustomerContent from '../components/CustomerContent.vue'
 import CompanyContent from '../components/CompanyContent.vue'
 import { useAuthStore } from '@/stores/auth'

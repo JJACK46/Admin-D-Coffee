@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useBranchStore } from '../stores/branch'
+import { useBranchStore } from '@/stores/branch'
 import { requiredRule } from '@/utils/rules'
 
 const store = useBranchStore()

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CardShort from '../components/CardShort.vue'
-import { useHomeStore } from '../store/home'
+import { useHomeStore } from '../../../stores/home'
 
 const store = useHomeStore()
 </script>

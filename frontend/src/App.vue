@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { useMainDrawerStore } from './stores/drawer'
 import { useDisplay } from 'vuetify'
-import { watch } from 'vue'
+import { computed, watch } from 'vue'
 import MainLayout from './layouts/MainLayout.vue'
+import FullLayout from './layouts/FullLayout.vue'
+import { useRoute } from 'vue-router'
 
 const drawer = useMainDrawerStore()
+const route = useRoute()
+const layout = computed(() => route.meta.layout ?? 'main')
 
 watch(useDisplay().mdAndDown, () => {
   drawer.closeDrawer()
@@ -13,7 +17,8 @@ watch(useDisplay().mdAndDown, () => {
 
 <template>
   <v-app>
-    <MainLayout />
+    <MainLayout v-if="layout === 'main'" />
+    <FullLayout v-else-if="layout === 'full'" />
   </v-app>
 </template>
 
