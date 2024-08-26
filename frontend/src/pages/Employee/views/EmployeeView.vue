@@ -11,7 +11,7 @@
   >
     <template #topCardText>
       <v-row>
-        <v-col cols="10">
+        <v-col cols="9">
           <SearchTableField @get-search-text="handleSearchText" />
         </v-col>
         <v-col>

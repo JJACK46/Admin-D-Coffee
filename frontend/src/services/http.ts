@@ -3,7 +3,6 @@ import { useLoadingStore } from '@/stores/loading'
 import { useNotificationStore } from '@/stores/notifications'
 import axios from 'axios'
 import { nextTick } from 'vue'
-import { useRouter } from 'vue-router'
 
 const baseURL = 'http://localhost:3000'
 export const baseURLImage = `${baseURL}/images`
@@ -63,7 +62,7 @@ instance.interceptors.response.use(
     if (err.code === 'ERR_NETWORK') {
       try {
         useNotificationStore().addPopText('No network connection')
-        useRouter().replace('/login')
+        // useRouter().replace('/login')
         return Promise.reject(err)
       } catch {
         throw Error

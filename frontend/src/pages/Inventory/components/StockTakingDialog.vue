@@ -30,8 +30,8 @@ function handleHighlight(min: number, bal: number) {
 
 <template>
   <v-dialog v-model="stock.isDialogOpen" fullscreen persistent transition="dialog-top-transition">
-    <v-card class="px-10 py-2">
-      <template #title>
+    <v-sheet>
+      <v-card-title>
         <v-row>
           <v-col>
             <h3>Stock-taking</h3>
@@ -46,7 +46,7 @@ function handleHighlight(min: number, bal: number) {
           </v-col>
         </v-row>
         <v-divider class="mt-5" thickness="2"></v-divider>
-      </template>
+      </v-card-title>
       <v-form v-model="formComplete">
         <v-data-table
           class="px-6 row-height-50"
@@ -118,13 +118,13 @@ function handleHighlight(min: number, bal: number) {
       </v-form>
       <v-spacer></v-spacer>
       <v-card-actions class="justify-end ma-2">
-        <v-btn variant="outlined" @click="stock.closeDialog()"> close </v-btn>
+        <v-btn variant="text" @click="stock.closeDialog()"> close </v-btn>
         <WarningDialog :save-callback="stock.save">
           <template #activator="{ props }">
             <v-btn
               :disabled="!formComplete || hasDuplicate"
-              variant="flat"
-              color="secondary"
+              variant="text"
+              color="success"
               v-bind="props"
             >
               save
@@ -132,6 +132,6 @@ function handleHighlight(min: number, bal: number) {
           </template>
         </WarningDialog>
       </v-card-actions>
-    </v-card>
+    </v-sheet>
   </v-dialog>
 </template>

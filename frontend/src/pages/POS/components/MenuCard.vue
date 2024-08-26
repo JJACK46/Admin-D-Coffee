@@ -30,7 +30,7 @@ defineProps<{
           ></v-img>
         </template>
         <template #append>
-          <v-chip class="mt-2 justify-right">
+          <v-chip rounded class="mt-2 justify-right">
             {{ item.type }}
           </v-chip>
         </template>

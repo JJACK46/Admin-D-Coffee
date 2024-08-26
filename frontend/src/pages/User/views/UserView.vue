@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from '../../../stores/user'
 import UserDialog from '../components/UserDialog.vue'
-import TableLayout from '@/components/MainTable.vue'
+import Table from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'
 import { baseURLImage } from '@/services/http'
@@ -25,7 +25,7 @@ function handleImageUrl(item: User) {
 
 <template>
   <UserDialog />
-  <TableLayout
+  <Table
     title="User Management"
     :callback-func="store.getAllUsers"
     :search="searchText"
@@ -58,5 +58,5 @@ function handleImageUrl(item: User) {
       <v-icon size="small" class="me-2" @click="store.openDialog(item)"> mdi-pencil </v-icon>
       <v-icon size="small" @click="store.deleteItem(item.id!)"> mdi-delete </v-icon>
     </template>
-  </TableLayout>
+  </Table>
 </template>

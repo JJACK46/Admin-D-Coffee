@@ -54,10 +54,10 @@
           <v-snackbar
             v-model="isLoginFailed"
             class="justify-center"
-            location="bottom"
-            color="red"
-            variant="flat"
-            close-delay="50"
+            location="center"
+            color="error"
+            close-delay="25"
+            close-on-content-click
           >
             <h4 class="text-center">{{ auth.errorMessage }}</h4>
           </v-snackbar>

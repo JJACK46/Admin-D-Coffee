@@ -18,7 +18,7 @@ const maskObject = reactive({})
     fullscreen
     persistent
   >
-    <v-card class="pa-10">
+    <v-sheet>
       <v-card-title>
         <h3 class="text-center">สลิปเงินเดือน / Salary Slip</h3>
         <div v-if="store.isNewSlip">
@@ -48,17 +48,18 @@ const maskObject = reactive({})
                 </v-autocomplete>
               </v-col>
               <v-col v-else cols="12" md="6">
-                รหัสพนักงาน: {{ store.tempSlip?.employee?.id }}
+                รหัสพนักงาน / EmpID: {{ store.tempSlip?.employee?.id }}
               </v-col>
               <v-col cols="12" md="6">
-                ชื่อนามสกุล:
+                ชื่อนามสกุล / Name:
                 {{ store.tempSlip?.employee?.fullName ?? store.selectEmployee?.fullName }}
               </v-col>
               <v-col cols="12">
-                ตำแหน่ง: {{ store.tempSlip?.employee?.title ?? store.selectEmployee?.title }}
+                ตำแหน่ง / Position:
+                {{ store.tempSlip?.employee?.title ?? store.selectEmployee?.title }}
               </v-col>
               <v-divider class="my-1"></v-divider>
-              <v-col cols="12" class="py-8">
+              <v-col cols="12" class="py-5">
                 <h3>
                   บริษัท ดีคอฟฟี่ จำกัด สาขา :
                   {{ store.tempSlip?.branch?.name ?? auth.getCurrentUser?.branch.name }}
@@ -87,6 +88,7 @@ const maskObject = reactive({})
                 <DatePickerDialog @get-selected-date="(value) => (store.tempSlip.dueDate = value)">
                   <template #activator="{ props }">
                     <v-text-field
+                      hide-details
                       v-model="store.tempSlip.dueDate"
                       density="compact"
                       prepend-inner-icon="mdi-calendar"
@@ -108,6 +110,7 @@ const maskObject = reactive({})
               </v-col>
               <v-col v-if="store.isNewSlip">
                 <v-text-field
+                  hide-details
                   v-maska:[optionsMask]="maskObject"
                   density="compact"
                   variant="outlined"
@@ -119,7 +122,7 @@ const maskObject = reactive({})
         </v-row>
         <v-row>
           <v-col>
-            <v-table class="border" height="470">
+            <v-table class="border">
               <thead>
                 <tr>
                   <th style="text-align: center">
@@ -212,10 +215,10 @@ const maskObject = reactive({})
           </v-col>
         </v-row>
       </v-card-text>
-      <v-card-actions class="mx-5">
-        <div v-if="store.isNewSlip" class="mx-auto">
-          <v-btn variant="outlined" text="Cancel" @click="store.closeSlipDialog()"></v-btn>
-          <v-btn color="primary" variant="flat" text="Save"></v-btn>
+      <v-card-actions class="justify-end">
+        <div v-if="store.isNewSlip">
+          <v-btn variant="text" text="Cancel" @click="store.closeSlipDialog()"></v-btn>
+          <v-btn color="success" variant="text" text="Save"></v-btn>
         </div>
         <div v-else>
           <p>Verified & Paid by {{ auth.getCurrentUser?.fullName }}</p>
@@ -224,7 +227,7 @@ const maskObject = reactive({})
           <v-btn color="primary" variant="flat"> Pay </v-btn>
         </div>
       </v-card-actions>
-    </v-card>
+    </v-sheet>
   </v-dialog>
 </template>
 

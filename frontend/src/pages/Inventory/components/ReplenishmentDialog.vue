@@ -21,8 +21,8 @@ onMounted(() => {
 
 <template>
   <v-dialog v-model="store.isDialogOpen" fullscreen persistent transition="dialog-top-transition">
-    <v-card class="px-10 py-2">
-      <template #title>
+    <v-sheet>
+      <v-card-title>
         <v-row>
           <v-col>
             <h3>Replenishment Order</h3>
@@ -37,7 +37,7 @@ onMounted(() => {
           </v-col>
         </v-row>
         <v-divider class="mt-5" thickness="2"></v-divider>
-      </template>
+      </v-card-title>
       <v-form v-model="isFormValid">
         <v-data-table
           class="px-6"
@@ -116,13 +116,13 @@ onMounted(() => {
       </v-form>
       <v-spacer></v-spacer>
       <v-card-actions class="justify-end ma-2">
-        <v-btn variant="outlined" @click="store.closeDialog()"> close </v-btn>
+        <v-btn variant="text" @click="store.closeDialog()"> close </v-btn>
         <WarningDialog :save-callback="store.save">
           <template #activator="{ props }">
             <v-btn
               :disabled="!isFormValid || store.repItems.length === 0 || hasDuplicate"
-              color="secondary"
-              variant="flat"
+              color="success"
+              variant="text"
               v-bind="props"
             >
               save
@@ -130,6 +130,6 @@ onMounted(() => {
           </template>
         </WarningDialog>
       </v-card-actions>
-    </v-card>
+    </v-sheet>
   </v-dialog>
 </template>

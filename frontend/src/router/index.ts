@@ -46,7 +46,11 @@ const router = createRouter({
       path: '/pos',
       name: 'Point of Sale',
       component: () => import('../pages/POS/view/POSview.vue'),
-      meta: { requiresAuth: true, roles: [Role.admin, Role.manager, Role.employee], layout: 'full' }
+      meta: {
+        requiresAuth: true,
+        roles: [Role.admin, Role.manager, Role.employee],
+        layout: 'focus'
+      }
     },
     {
       path: '/product',

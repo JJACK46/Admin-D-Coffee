@@ -8,13 +8,14 @@ import DatePickerDialog from '@/components/DatePickerDialog.vue'
 import type { MaskaDetail, MaskOptions } from 'maska'
 import type { Employee } from '../../../types/employee'
 import { computed } from 'vue'
+import DefaultDialog from '@/components/DefaultDialog.vue'
 const store = useEmployeeStore()
 const optionsMask: MaskOptions = {
   mask: '###-###-####',
   eager: true
 }
 const telMaskObject = reactive<MaskaDetail>({ masked: '', unmasked: '', completed: false })
-const formState = ref(true)
+const form = ref(true)
 
 const telTextField = ref()
 
@@ -47,11 +48,14 @@ const computedImage = computed(() => {
 </script>
 
 <template>
-  <v-dialog v-model="store.dialogState" persistent width="1024">
-    <v-card rounded="lg">
-      <h2 class="px-5 py-3"></h2>
-      <v-divider></v-divider>
-      <v-form v-model="formState" class="pa-5">
+  <DefaultDialog
+    :title="store.titleDialog"
+    :state-form="form"
+    v-model="store.dialogState"
+    :callback-save="store.save"
+  >
+    <template #content>
+      <v-form v-model="form">
         <v-row>
           <v-col cols="12">
             <div>
@@ -189,19 +193,7 @@ const computedImage = computed(() => {
             </DatePickerDialog>
           </v-col>
         </v-row>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn variant="outlined" @click="store.closeDialog" text="close"> </v-btn>
-          <v-btn
-            :disabled="!formState"
-            color="primary"
-            variant="flat"
-            @click="store.save()"
-            text="Save"
-          >
-          </v-btn>
-        </v-card-actions>
       </v-form>
-    </v-card>
-  </v-dialog>
+    </template>
+  </DefaultDialog>
 </template>

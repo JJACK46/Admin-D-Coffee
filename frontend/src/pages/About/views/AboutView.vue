@@ -1,38 +1,39 @@
 <template>
-  <v-img src="src/views/About/assets/bg-coffee-beans-2.png" class="bg-img" cover> </v-img>
-  <v-container fluid class="h-100">
-    <v-col>
-      <v-card class="pa-4">
-        <h2>D-Coffee Enterprise Web App ( ver. SOLO )</h2>
-        <h3>
-          Developing an application for managing a coffee store, which includes inventory
-          management, point of sale (POS) system, and various other features related to company
-          benefits.
-        </h3>
-      </v-card>
-    </v-col>
-    <v-col class="text-center">
-      <v-card class="pa-3 text-left" rounded elevation="0">
-        <q>
-          This application was initially developed by SimpleDev team for classroom assignments.
-          Subsequently, I undertook its continued development until the application reached
-          completion.
-        </q>
-        <br />
-        <div class="text-right mx-2">
-          <i> Aphidech Mahakoat </i>
-        </div>
-      </v-card>
-    </v-col>
-    <v-footer class="text-center mt-8 bg-transparent">
-      <v-col>
-        <h5>{{ textFooter }}</h5>
-      </v-col>
-    </v-footer>
+  <v-container width="1024" style="line-height: 1.7">
+    <v-btn
+      variant="tonal"
+      @click="
+        () => {
+          router.back()
+        }
+      "
+      >back</v-btn
+    >
+    <v-img src="front of coffee store.jpeg" width="500" class="mx-auto" rounded></v-img>
+    <v-card-title> D-Coffee Enterprise Web App ( ver. SOLO ) </v-card-title>
+    <v-card-text>
+      <p>
+        Developing an application for managing a coffee store, which includes inventory management,
+        point of sale (POS) system, and various other features related to company benefits.
+      </p>
+    </v-card-text>
+    <div class="pa-3">
+      <q>
+        This application was initially developed by SimpleDev team for classroom assignments.
+        Subsequently, I undertook its continued development until the application reached
+        completion.
+      </q>
+      <br />
+      <div class="text-right mx-2">
+        <i> Aphidech Mahakoat </i>
+      </div>
+    </div>
+    <h5 class="text-center">{{ textFooter }}</h5>
   </v-container>
 </template>
 
 <script setup lang="ts">
+import router from '@/router'
 import { textFooter } from '@/utils/info'
 </script>
 

@@ -5,6 +5,7 @@ import { adminNavItems, employeeNavItems, managerNavItems } from '@/router/nav-i
 import { computed } from 'vue'
 
 const auth = useAuthStore()
+const appVersion = APP_VERSION
 
 // const routes = ref<RouteRecordNormalized[]>([]);
 
@@ -67,6 +68,7 @@ const drawer = useMainDrawerStore()
     </v-list> -->
 
     <template #append>
+      <p class="text-center py-1">{{ `v. ${appVersion}` }}</p>
       <v-divider />
       <v-list class="pa-1">
         <v-list-item title="LOGOUT" prepend-icon="mdi-logout" @click="auth.logout()"></v-list-item>

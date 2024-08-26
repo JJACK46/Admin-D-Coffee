@@ -54,7 +54,7 @@ export const useUserStore = defineStore('users', {
       }
       this.dialogState = true
     },
-    closeDialog() {
+    async closeDialog() {
       this.resetItem()
       this.dialogState = false
     },

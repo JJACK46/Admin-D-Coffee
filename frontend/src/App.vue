@@ -5,6 +5,7 @@ import { computed, watch } from 'vue'
 import MainLayout from './layouts/MainLayout.vue'
 import FullLayout from './layouts/FullLayout.vue'
 import { useRoute } from 'vue-router'
+import FocusLayout from './layouts/FocusLayout.vue'
 
 const drawer = useMainDrawerStore()
 const route = useRoute()
@@ -19,6 +20,7 @@ watch(useDisplay().mdAndDown, () => {
   <v-app>
     <MainLayout v-if="layout === 'main'" />
     <FullLayout v-else-if="layout === 'full'" />
+    <FocusLayout v-else-if="layout === 'focus'" />
   </v-app>
 </template>
 

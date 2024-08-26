@@ -2,6 +2,7 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useUserStore } from '@/stores/user'
 import { requiredRule } from '@/utils/rules'
+import DefaultDialog from '@/components/DefaultDialog.vue'
 
 const store = useUserStore()
 const formComplete = ref<boolean>()
@@ -26,12 +27,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-dialog v-model="store.dialogState" width="512" persistent>
-    <v-card>
-      <template #title>
-        {{ store.formTitle }}
-      </template>
-      <v-divider class="mb-5"></v-divider>
+  <DefaultDialog
+    v-model="store.dialogState"
+    :title="store.formTitle"
+    :callback-save="store.save"
+    v-model:state-form="formComplete"
+  >
+    <template #content>
       <v-form class="px-5" v-model="formComplete">
         <v-row>
           <v-col cols="12">
@@ -93,18 +95,6 @@ onMounted(() => {
           </v-col>
         </v-row>
       </v-form>
-      <v-card-actions class="pa-5">
-        <v-spacer></v-spacer>
-        <v-btn variant="text" color="white" @click="store.closeDialog" text="Close"> </v-btn>
-        <v-btn
-          :disabled="!formComplete"
-          color="success"
-          variant="text"
-          @click="store.save()"
-          text="Save"
-        >
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+    </template>
+  </DefaultDialog>
 </template>

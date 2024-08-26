@@ -3,19 +3,21 @@ import DatePickerDialog from '@/components/DatePickerDialog.vue'
 import { usePromotionStore } from '@/stores/promotion.ts'
 import { requiredRule, rulePositiveNumberOnly } from '@/utils/rules.ts'
 import { ref } from 'vue'
+import DefaultDialog from '@/components/DefaultDialog.vue'
 
 const store = usePromotionStore()
 const formComplete = ref<boolean>()
 </script>
 
 <template>
-  <v-dialog v-model="store.dialogState" width="512">
-    <v-card rounded="lg">
-      <h2 class="pt-3 text-center">
-        {{ store.titleDialog }}
-      </h2>
-      <v-divider class="mt-3"></v-divider>
-      <v-form v-model="formComplete" class="pa-5">
+  <DefaultDialog
+    :title="store.titleDialog"
+    v-model="store.dialogState"
+    :callback-save="store.save"
+    v-model:state-form="formComplete"
+  >
+    <template #content>
+      <v-form v-model="formComplete">
         <v-row>
           <v-col cols="12">
             <v-text-field :rules="[requiredRule]" v-model="store.tempItem.name" label="Name" />
@@ -84,13 +86,6 @@ const formComplete = ref<boolean>()
           </v-col>
         </v-row>
       </v-form>
-      <v-card-actions class="px-5 pb-5">
-        <v-spacer></v-spacer>
-        <v-btn variant="outlined" @click="store.closeDialog()"> close </v-btn>
-        <v-btn :disabled="!formComplete" color="primary" variant="flat" @click="store.save()">
-          save
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+    </template>
+  </DefaultDialog>
 </template>

@@ -2,18 +2,20 @@
 import { ref } from 'vue'
 import { useIngredientStore } from '@/stores/ingredient'
 import { defaultUnitTypes } from '@/types/ingredient'
+import DefaultDialog from '@/components/DefaultDialog.vue'
 
 const store = useIngredientStore()
-const formComplete = ref<boolean>()
+const form = ref<boolean>()
 </script>
 <template>
-  <v-dialog v-model="store.isDialogOpen" width="auto" persistent>
-    <v-card rounded="lg">
-      <h2 class="pt-2 text-center">
-        {{ store.getTitleDialog }}
-      </h2>
-      <v-divider class="my-2"></v-divider>
-      <v-form v-model="formComplete" class="pa-5">
+  <DefaultDialog
+    v-model="store.isDialogOpen"
+    :title="store.getTitleDialog"
+    :callback-save="store.save"
+    v-model:state-form="form"
+  >
+    <template #content>
+      <v-form v-model="form" class="pa-5">
         <v-row>
           <v-col cols="12">
             <v-text-field v-model="store.tempItem.name" label="Name"> </v-text-field>
@@ -24,17 +26,6 @@ const formComplete = ref<boolean>()
           </v-col>
         </v-row>
       </v-form>
-      <v-card-actions class="justify-end px-5 mb-3">
-        <v-btn variant="outlined" @click="store.closeDialog()" text="close"> </v-btn>
-        <v-btn
-          :disabled="!formComplete"
-          color="primary"
-          variant="flat"
-          @click="store.save()"
-          text="save"
-        >
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+    </template>
+  </DefaultDialog>
 </template>

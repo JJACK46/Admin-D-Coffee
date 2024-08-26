@@ -8,8 +8,8 @@
     has-custom-items
   >
     <template #topCardText>
-      <v-card flat>
-        <template #title>
+      <v-row class="align-center">
+        <v-col>
           <v-select
             v-if="isAdmin"
             hide-details
@@ -25,9 +25,9 @@
             placeholder="Select branch"
           >
           </v-select>
-        </template>
-        <template #actions>
-          <span class="d-flex justify-end w-100 px-3 pb-3 ga-2">
+        </v-col>
+        <v-col cols="auto">
+          <span class="d-flex w-100 ga-2">
             <v-menu>
               <template #activator="{ props }">
                 <v-btn prepend-icon="mdi-clock" v-bind="props" variant="flat">History</v-btn>
@@ -67,8 +67,8 @@
               ></ExportFileButton>
             </div>
           </span>
-        </template>
-      </v-card>
+        </v-col>
+      </v-row>
     </template>
     <template #item="{ item }">
       <tr :class="handleHighlight(item.minBalance, item.balance)">
@@ -81,10 +81,6 @@
       </tr>
     </template>
   </MainTable>
-  <h5 class="d-flex justify-center align-center" color="warning">
-    <v-icon icon="mdi-alert" class="mr-1 ml-1"> </v-icon>
-    Be cautious to take any action !
-  </h5>
 </template>
 
 <script setup lang="ts">

@@ -3,19 +3,21 @@ import { requiredRule, ruleFiles, rulePositiveNumberOnly } from '@/utils/rules'
 import { useProductStore } from '@/stores/product'
 import { typesOfProducts } from '../../../types/product'
 import { ref } from 'vue'
+import DefaultDialog from '@/components/DefaultDialog.vue'
 
 const store = useProductStore()
 const formComplete = ref<boolean>()
 </script>
 
 <template>
-  <v-dialog v-model="store.dialogState" persistent width="712">
-    <v-card rounded="lg">
-      <h2 class="text-center pt-3">
-        {{ store.titleDialog }}
-      </h2>
-      <v-divider class="mt-3"></v-divider>
-      <v-form v-model="formComplete" class="pa-5">
+  <DefaultDialog
+    :title="store.titleDialog"
+    :state-form="formComplete"
+    v-model="store.dialogState"
+    :callback-save="store.save"
+  >
+    <template #content>
+      <v-form v-model="formComplete">
         <v-row>
           <v-col cols="12">
             <v-img
@@ -78,14 +80,7 @@ const formComplete = ref<boolean>()
             </v-select>
           </v-col>
         </v-row>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn variant="outlined" @click="store.closeDialog"> close </v-btn>
-          <v-btn :disabled="!formComplete" color="primary" variant="flat" @click="store.save()">
-            save
-          </v-btn>
-        </v-card-actions>
       </v-form>
-    </v-card>
-  </v-dialog>
+    </template>
+  </DefaultDialog>
 </template>
