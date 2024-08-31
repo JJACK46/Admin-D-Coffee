@@ -257,12 +257,12 @@ export const usePosStore = defineStore('pos', {
           totalDiscount: this.getTotalDiscount,
           change: this.getChange,
           totalNet: this.getTotalNetPrice,
-          employeeId: this.auth.getCurrentUser?.employeeId!,
+          employeeId: this.auth.getCurrentUser?.empId!,
           paymentType: this.paymentType,
           receiptItems: this.orderList,
           receiptItemsShort: receiptItemsShort,
           branchId: this.auth.getCurrentUser?.branch.id!,
-          employeeName: this.auth.getCurrentUser?.fullName
+          employeeName: this.auth.getCurrentUser?.name
         }
         if (this.selectedPromotion) {
           this.receipt.promotion = this.selectedPromotion

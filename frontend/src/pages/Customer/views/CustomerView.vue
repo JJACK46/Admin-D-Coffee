@@ -16,12 +16,10 @@
         <v-col>
           <v-btn
             prepend-icon="mdi-plus"
-            style="background-color: #a17754"
             @click="store.openDialog()"
             class="w-100 h-100"
             variant="flat"
             color="secondary"
-            rounded="xl"
             >New</v-btn
           >
         </v-col>

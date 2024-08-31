@@ -3,25 +3,26 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { AuthService } from '@/services/auth'
 import { Role } from '@/router/enum'
+import { UserService } from '@/services/user'
+import type { User } from '@/types/user'
 
-export interface UserProfile {
+export interface EssUser {
   branch: {
     id: number
     name: string
   }
-  fullName: string
-  employeeId?: number
-  customerId?: number
   id: number
-  imageUrl: string
+  img: string
   role: string
-  username: string
+  usr: string
+  empId: number
+  cusId: number
+  name: string
 }
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    user: ref<UserProfile | null>(null),
-    showAppBar: ref(true),
+    user: ref<EssUser | null>(null),
     isTokenExpired: ref(false),
     errorMessage: ref('')
   }),
@@ -38,7 +39,6 @@ export const useAuthStore = defineStore('auth', {
         this.isTokenExpired = false
         // this.user = res.user
         await this.checkBeforePush()
-        this.showAppBar = true
         // if (res.user.role !== 'customer') {
         //   useAttendanceStore().openDialog()
         // }
@@ -48,8 +48,19 @@ export const useAuthStore = defineStore('auth', {
         return false
       }
     },
+    async getUserData(): Promise<User | null> {
+      if (!this.user?.id) {
+        const res: EssUser = await AuthService.getProfile()
+        if (!res) {
+          return null
+        }
+        this.user = res
+      }
+      const res = await UserService.getById(this.user?.id ?? -1)
+      return res
+    },
     async getProfile() {
-      const res: UserProfile = await AuthService.getProfile()
+      const res: EssUser = await AuthService.getProfile()
       if (!res) {
         return
       }
@@ -95,7 +106,6 @@ export const useAuthStore = defineStore('auth', {
       localStorage.clear()
       router.replace('/login')
       this.isTokenExpired = isTokenExpired ?? false
-      this.showAppBar = false
     },
     async checkBeforePush() {
       switch (this.user?.role) {

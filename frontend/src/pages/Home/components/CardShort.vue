@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { useLoadingStore } from '@/stores/loading'
 import { computed } from 'vue'
+import { useLocale } from 'vuetify'
 
 const loader = useLoadingStore()
+
+const { t } = useLocale()
+const noData = t('noData')
 
 const props = defineProps<{
   title: string
@@ -20,38 +24,33 @@ const ratio = computed((): string => {
       return `+${res}`
     }
   }
-  return 'no data'
+  return noData
 })
 </script>
 
 <template>
-  <v-card v-if="loader.isLoading" rounded="xl" max-height="200">
+  <v-card v-if="loader.isLoading">
     <v-skeleton-loader type="card"> </v-skeleton-loader>
   </v-card>
-  <v-card
-    v-else
-    min-height="200"
-    max-height="200"
-    rounded="lg"
-    class="pa-4 align-center text-left custom-card text-h6"
-    :prepend-icon="props.icon"
-  >
+  <v-card v-else class="pa-4 align-center text-left custom-card text-h6" :prepend-icon="props.icon">
     <template v-slot:title>
-      {{ props.title }}
+      <div class="ml-2">
+        {{ props.title }}
+      </div>
     </template>
     <template v-slot:subtitle>
-      <p :class="props.class_subtitle">
-        {{ ratio + (ratio !== 'no data' ? '%' : ' ') + props.subtitle }}
+      <p :class="props.class_subtitle" class="ml-2">
+        {{ ratio + (ratio !== noData ? '%' : ' ') + props.subtitle }}
       </p>
     </template>
     <v-card-text>
       <v-row>
         <v-col class="text-right">
-          <h1>{{ props.newData ?? `no data` }}</h1>
+          <h1>{{ props.newData ?? noData }}</h1>
         </v-col>
         <v-divider />
         <v-col class="text-grey">
-          <h1>{{ props.oldData ?? `no data` }}</h1>
+          <h1>{{ props.oldData ?? noData }}</h1>
         </v-col>
       </v-row>
     </v-card-text>

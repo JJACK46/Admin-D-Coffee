@@ -23,7 +23,7 @@ function handleSearch(value: string) {
   >
     <template #topCardText>
       <v-row>
-        <v-col cols="10">
+        <v-col>
           <SearchTableField @get-search-text="handleSearch" />
         </v-col>
         <v-col>

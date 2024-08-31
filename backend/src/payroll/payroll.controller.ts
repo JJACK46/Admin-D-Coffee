@@ -33,6 +33,11 @@ export class PayrollController {
     return this.payrollService.findAllPaid();
   }
 
+  @Get('paid/emp/:id')
+  findWhereEmpId(@Param('id') id: string) {
+    return this.payrollService.findWhereEmpId(+id);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.payrollService.findOne(+id);

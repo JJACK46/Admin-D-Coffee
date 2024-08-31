@@ -7,10 +7,13 @@ import ChartBox from '../components/ChartBox.vue'
 import { useHomeStore } from '../../../stores/home'
 import { useAuthStore } from '@/stores/auth'
 import { useLoadingStore } from '@/stores/loading'
+import { useLocale } from 'vuetify'
 
 const store = useHomeStore()
 const auth = useAuthStore()
 const loader = useLoadingStore()
+
+const { t } = useLocale()
 
 onMounted(() => {
   store.setupToday()
@@ -24,7 +27,7 @@ onMounted(() => {
     <v-sheet class="pt-3 bg-transparent" flat>
       <v-row no-gutters>
         <v-col cols="auto">
-          <h1>Dashboard</h1>
+          <h1>{{ t('dashboard') }}</h1>
         </v-col>
         <v-spacer></v-spacer>
         <v-col class="text-end pa-0 ma-0">
@@ -36,8 +39,9 @@ onMounted(() => {
           <v-select
             variant="solo"
             clearable
+            density="comfortable"
             v-model="store.selectBranch"
-            label="Select a branch"
+            label="Branch"
             :items="store.getBranch"
             return-object
             item-title="name"
@@ -59,15 +63,15 @@ onMounted(() => {
     <v-row>
       <v-col cols="12">
         <v-row no-gutters>
-          <h2>Last sales</h2>
+          <h2>{{ t('sales') }}</h2>
           <v-spacer></v-spacer>
-          <h2>{{ store.selectBranch?.name ?? 'ALL' }}</h2>
+          <h2>{{ store.selectBranch?.name ?? `${t('all')}` }}</h2>
         </v-row>
       </v-col>
       <v-divider class="mb-2"></v-divider>
-      <v-col lg="4">
+      <v-col md="4" cols="12">
         <CardShort
-          title="Daily Sales"
+          :title="`${t('dSale')}`"
           subtitle="from yesterday"
           class_subtitle="text-green"
           :old-data="store.getDailySales?.yesterday"
@@ -75,10 +79,10 @@ onMounted(() => {
           icon="mdi-heart"
         />
       </v-col>
-      <v-col lg="4">
+      <v-col md="4" cols="12">
         <CardShort
           icon="mdi-cart"
-          title="Monthly Sales"
+          :title="`${t('mSale')}`"
           subtitle="from last month"
           class_subtitle="text-green"
           :old-data="store.getMonthlySales?.lastMonth"
@@ -86,10 +90,10 @@ onMounted(() => {
         >
         </CardShort>
       </v-col>
-      <v-col lg="4">
+      <v-col md="4" cols="12">
         <CardShort
           icon="mdi-currency-usd"
-          title="Yearly Sales"
+          :title="`${t('ySale')}`"
           subtitle="from last year"
           class_subtitle="text-red"
           :old-data="store.getYearlySales?.lastYear"
@@ -98,9 +102,9 @@ onMounted(() => {
       </v-col>
       <v-col cols="12">
         <v-row no-gutters>
-          <h2>Revenue charts</h2>
+          <h2>{{ t('revenue') }}</h2>
           <v-spacer></v-spacer>
-          <h2>{{ store.selectBranch?.name ?? 'ALL' }}</h2>
+          <h2>{{ store.selectBranch?.name ?? `${t('all')}` }}</h2>
         </v-row>
         <v-divider class="mt-2"></v-divider>
       </v-col>
@@ -116,7 +120,7 @@ onMounted(() => {
         >
         </v-select>
         <ChartBox
-          title="Day over Day"
+          :title="`${t('dOverD')}`"
           :chart-data="store.getRevenueDay?.map((item) => item.totalNet)"
           :chart-labels="store.getRevenueDay.map((item) => item.date)"
         ></ChartBox>
@@ -131,7 +135,7 @@ onMounted(() => {
         >
         </v-select>
         <ChartBox
-          title="Month over Month"
+          :title="`${t('mOverM')}`"
           :chart-data="store.getRevenueMonth.map((item) => item.totalNet)"
           :chart-labels="store.getRevenueMonth.map((item) => getMonthAbbreviation(+item.month))"
         />
@@ -143,7 +147,7 @@ onMounted(() => {
           }}
         </v-card>
         <ChartBox
-          title="Year over Year "
+          :title="`${t('yOverY')}`"
           :chart-data="store.getRevenueYear.map((item) => item.totalNet)"
           :chart-labels="store.getRevenueYear.map((item) => item.year)"
         />

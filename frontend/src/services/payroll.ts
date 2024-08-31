@@ -21,6 +21,15 @@ export class PayrollService {
     }
   }
 
+  public static async getWhereEmp(id: number) {
+    try {
+      const res = await http.get(`${this.path}/paid/emp/${id}`)
+      return res.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   public static async create(item: Slip) {
     try {
       const res = await http.post(this.path, item)

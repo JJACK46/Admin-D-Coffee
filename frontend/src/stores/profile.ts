@@ -64,9 +64,9 @@ export const useProfileStore = defineStore('profile', {
       state.attendanceRecord.reduce((sum, item) => (item.typeWork === 'OT' ? sum + 1 : sum), 0)
   },
   actions: {
-    setupDTO() {
+    setupDTO(id: number) {
       this.profileDTO = {
-        userId: this.auth.getCurrentUser?.id!,
+        userId: id,
         month: new Date().getMonth() + 1,
         year: new Date().getFullYear()
       }
@@ -74,26 +74,20 @@ export const useProfileStore = defineStore('profile', {
     async fetchSales() {
       this.sales = await ProfileServices.getSales(this.profileDTO)
     },
-    async fetchCustomerReceipts() {
-      this.receipts = await ReceiptService.getAllWhereCustomer(
-        this.auth.getCurrentUser?.customerId!
-      )
+    async fetchCustomerReceipts(id: number) {
+      this.receipts = await ReceiptService.getAllWhereCustomer(id)
     },
-    async fetchCustomer() {
-      const cusId = this.auth.getCurrentUser?.customerId ?? 0
-      this.customer = await CustomerService.getById(cusId)
+    async fetchCustomer(id: number) {
+      this.customer = await CustomerService.getById(id)
     },
-    async fetchEmployee() {
-      const empId = this.auth.getCurrentUser?.employeeId ?? 0
-      this.employee = await EmployeeService.getById(empId)
+    async fetchEmployee(id: number) {
+      this.employee = await EmployeeService.getById(id)
     },
-    async fetchSlips() {
-      this.slips = await PayrollService.getAllPaid()
+    async fetchSlips(id: number) {
+      this.slips = await PayrollService.getWhereEmp(id)
     },
-    async fetchAttendance() {
-      this.attendanceRecord = await AttendanceService.getAllWhereEmployee(
-        this.auth.getCurrentUser?.id!
-      )
+    async fetchAttendance(id: number) {
+      this.attendanceRecord = await AttendanceService.getAllWhereUser(id)
     }
   }
 })

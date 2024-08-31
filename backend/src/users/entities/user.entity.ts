@@ -1,4 +1,4 @@
-import { Exclude, Expose, Transform } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { Customer } from 'src/customers/entities/customer.entity';
 import { Employee } from 'src/employees/entities/employee.entity';
 import { Role } from 'src/roles/entities/role.entity';
@@ -25,42 +25,41 @@ export class User {
 
   @OneToOne(() => Employee, { nullable: true })
   @JoinColumn()
-  @Exclude()
+  // @Exclude()
   employee: Employee;
 
   @OneToOne(() => Customer, { nullable: true })
   @JoinColumn()
-  @Exclude()
+  // @Exclude()
   customer: Customer;
 
   @ManyToOne(() => Role, (role) => role.user)
   @JoinColumn()
-  @Transform(({ value }) => ({ id: value.id, name: value.name }))
   role: Role;
 
-  @Expose()
-  get imageUrl() {
-    if (this.employee) {
-      return this.employee?.imageUrl;
-    }
-    return this.customer?.imageUrl;
-  }
+  // @Expose()
+  // get img() {
+  //   if (this.employee) {
+  //     return this.employee?.imageUrl;
+  //   }
+  //   return this.customer?.imageUrl;
+  // }
 
   @Expose()
-  get fullName(): string {
+  get name(): string {
     if (this.employee) {
       return this.employee?.fullName;
     }
     return this.customer?.fullName;
   }
 
-  @Expose()
-  get customerId(): number {
-    return this.customer?.id;
-  }
+  // @Expose()
+  // get cusId(): number {
+  //   return this.customer?.id;
+  // }
 
-  @Expose()
-  get employeeId(): number {
-    return this.employee?.id;
-  }
+  // @Expose()
+  // get empId(): number {
+  //   return this.employee?.id;
+  // }
 }

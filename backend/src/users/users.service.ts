@@ -58,14 +58,18 @@ export class UsersService {
   }
 
   findOneById(id: number) {
-    return this.repo.findOneOrFail({
-      where: { id },
-      relations: {
-        employee: { branch: true },
-        customer: true,
-        role: true,
-      },
-    });
+    try {
+      return this.repo.findOne({
+        where: { id },
+        relations: {
+          employee: true,
+          customer: true,
+          role: true,
+        },
+      });
+    } catch (error) {
+      throw new Error('' + error);
+    }
   }
 
   findOneByName(username: string) {

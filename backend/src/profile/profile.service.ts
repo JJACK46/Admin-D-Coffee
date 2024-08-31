@@ -29,7 +29,7 @@ export class ProfileService {
       const queryBuilder = this.repoReceipt
         .createQueryBuilder('receipt')
         .select('SUM(receipt.totalNet)', 'totalNet')
-        .addSelect("strftime('%d',receipt.createdDate)", 'date')
+        .addSelect("DATE_FORMAT(receipt.createdDate,'%d')", 'date')
         .addSelect('receipt.createdTime', 'time')
         .where('receipt.createdDate BETWEEN :startDate AND :endDate', {
           startDate: startDate.toISOString().slice(0, 10),
@@ -51,7 +51,7 @@ export class ProfileService {
 
       const queryBuilder = this.repoReceipt
         .createQueryBuilder('receipt')
-        .select("strftime('%m', receipt.createdDate)", 'month')
+        .select("DATE_FORMAT(receipt.createdDate,'%m')", 'month')
         .addSelect('SUM(receipt.totalNet)', 'totalNet')
         .where('receipt.createdDate BETWEEN :startDate AND :endDate', {
           startDate: startDate.toISOString().slice(0, 10),
@@ -70,7 +70,7 @@ export class ProfileService {
     try {
       const queryBuilder = this.repoReceipt
         .createQueryBuilder('receipt')
-        .select("strftime('%Y', receipt.createdDate)", 'year')
+        .select("DATE_FORMAT(receipt.createdDate,'%Y')", 'year')
         .addSelect('SUM(receipt.totalNet)', 'totalNet')
         .andWhere('receipt.userId = :id', { id: dto.userId })
         .groupBy('year')

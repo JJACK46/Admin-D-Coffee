@@ -13,21 +13,20 @@
           <v-select
             v-if="isAdmin"
             hide-details
-            rounded="lg"
             class="mt-2"
             variant="outlined"
+            density="compact"
             label="Branch"
             :rules="[requiredRule]"
             :items="store.availableBranch"
             item-title="name"
             item-value="name"
             @update:model-value="store.handleInventorySelected"
-            placeholder="Select branch"
           >
           </v-select>
         </v-col>
         <v-col cols="auto">
-          <span class="d-flex w-100 ga-2">
+          <span class="d-flex w-100 h-100 ga-2">
             <v-menu>
               <template #activator="{ props }">
                 <v-btn prepend-icon="mdi-clock" v-bind="props" variant="flat">History</v-btn>

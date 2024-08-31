@@ -8,7 +8,7 @@ const store = usePosStore()
 
 <template>
   <v-navigation-drawer location="right" width="512" class="py-2">
-    <v-table fixed-header :height="useDisplay().xlAndUp.value ? 420 : 255">
+    <v-table fixed-header :height="useDisplay().xlAndUp.value ? 500 : 320">
       <template #top>
         <v-row>
           <v-col>
@@ -68,7 +68,6 @@ const store = usePosStore()
           <tbody>
             <tr>
               <td>Total Price</td>
-
               <td>
                 <p class="text-end">
                   {{ store.getTotalOriginPrice }}

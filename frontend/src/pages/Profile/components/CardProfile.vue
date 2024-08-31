@@ -1,7 +1,7 @@
 <template>
   <v-skeleton-loader v-if="loader.isLoading" type="card" class="mb-5"></v-skeleton-loader>
-  <v-card v-else class="pa-4" id="card-profile">
-    <v-row class="justify-center">
+  <v-card v-else class="pa-4">
+    <v-row class="justify-center align-center">
       <v-col cols="auto">
         <v-img :src="imageUrl" width="170" height="170" rounded="circle">
           <template #error>

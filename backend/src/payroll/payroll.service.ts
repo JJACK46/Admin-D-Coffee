@@ -54,6 +54,18 @@ export class PayrollService {
     });
   }
 
+  findWhereEmpId(id: number) {
+    return this.repo.find({
+      where: {
+        status: 'paid',
+        employee: {
+          id,
+        },
+      },
+      relations: { payrollDetails: true },
+    });
+  }
+
   findOne(id: number) {
     return this.repo.findOne({
       where: { id: id },

@@ -12,9 +12,9 @@ export class AttendanceService {
     }
   }
 
-  public static async getAllWhereEmployee(id: number) {
+  public static async getAllWhereUser(id: number) {
     try {
-      const res = await http.get(`${this.path}/employee/${id}`)
+      const res = await http.get(`${this.path}/user/${id}`)
       return res.data
     } catch (e) {
       console.log(e)

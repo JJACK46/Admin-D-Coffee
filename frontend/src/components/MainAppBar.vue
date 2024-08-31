@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/auth'
 import { useMainDrawerStore } from '@/stores/drawer'
 import { useNotificationStore } from '@/stores/notifications'
 import { onBeforeUnmount, ref, watch } from 'vue'
-import { useDisplay, useTheme } from 'vuetify'
+import { useDisplay, useLocale, useTheme } from 'vuetify'
 
 const auth = useAuthStore()
 const drawer = useMainDrawerStore()
@@ -47,9 +47,18 @@ const useCurrentTime = () => {
 
 const currentTime = useCurrentTime()
 
+const locale = useLocale()
+
+const handleLocale = () => {
+  if (locale.current.value === 'th') {
+    locale.current.value = 'en'
+  } else {
+    locale.current.value = 'th'
+  }
+}
+
 const fieldAppMenu = [
   { icon: 'mdi-account-outline', title: 'Profile', path: '/profile' },
-  { icon: 'mdi-translate', title: 'Language', path: '' },
   { icon: 'mdi-cog-outline', title: 'Settings', path: '' }
 ]
 </script>
@@ -146,7 +155,7 @@ const fieldAppMenu = [
       <v-menu name="profile" :close-on-content-click="false">
         <template #activator="{ props }">
           <v-avatar v-bind="props" class="mr-2" style="cursor: pointer">
-            <v-img :src="`${baseURLImage}/employees/${auth.getCurrentUser?.imageUrl}`">
+            <v-img :src="`${baseURLImage}/employees/${auth.getCurrentUser?.img}`">
               <template #error>
                 <div style="background-color: #212121; width: 100%; height: 100%"></div>
               </template> </v-img
@@ -159,6 +168,12 @@ const fieldAppMenu = [
             :prepend-icon="item.icon"
             :to="item.path"
             >{{ item.title }}
+          </v-list-item>
+          <v-list-item
+            :title="`Language: ${locale.current.value.toUpperCase()}`"
+            prepend-icon="mdi-translate"
+            @click="handleLocale"
+          >
           </v-list-item>
           <v-list-item title="Dark Theme" prepend-icon="mdi-weather-night">
             <template #append>

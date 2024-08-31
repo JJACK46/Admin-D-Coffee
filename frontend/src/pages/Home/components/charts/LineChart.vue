@@ -6,7 +6,9 @@
     :data="chartData"
     :options="chartOptions"
   ></Line>
-  <span v-else class="d-flex align-center justify-center text-grey mt-12"><h3>No Data</h3></span>
+  <span v-else class="d-flex align-center justify-center text-grey mt-12"
+    ><h3>{{ t('noData') }}</h3></span
+  >
 </template>
 
 <script setup lang="ts">
@@ -15,9 +17,11 @@ import Chart from 'chart.js/auto'
 import { computed } from 'vue'
 import { useLoadingStore } from '@/stores/loading'
 import { monthShort } from '@/utils/date'
-// import { onMounted } from 'vue'
+import { useLocale } from 'vuetify'
 
 const loader = useLoadingStore()
+
+const { t } = useLocale()
 
 Chart.register()
 

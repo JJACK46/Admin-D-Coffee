@@ -30,7 +30,11 @@ function handleSearch(value: string) {
           <SearchTableField @get-search-text="handleSearch" />
         </v-col>
         <v-col>
-          <v-btn prepend-icon="mdi-plus" color="secondary" class="w-100" @click="store.openDialog()"
+          <v-btn
+            prepend-icon="mdi-plus"
+            color="secondary"
+            class="w-100 h-100"
+            @click="store.openDialog()"
             >New</v-btn
           >
         </v-col>

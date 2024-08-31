@@ -1,6 +1,6 @@
-import type { Employee } from '@/views/Employee/types/employee'
+import type { Employee } from '@/types/employee'
 import type { Role } from './role'
-import type { Customer } from '@/views/Customer/types/Customer'
+import type { Customer } from '@/types/Customer'
 
 export type User = {
   id?: number

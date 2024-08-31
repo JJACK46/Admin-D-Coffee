@@ -1,10 +1,10 @@
 <template>
   <v-container fluid class="h-100">
-    <CardProfile :image-url="`${baseURLImage}/customers/${user?.imageUrl}`">
+    <CardProfile :image-url="`${baseURLImage}/customers/${user?.img}`">
       <template #content>
         <v-list-item
           :title="user?.fullName"
-          :subtitle="`@${user?.username}`"
+          :subtitle="`@${user?.usr}`"
           class="justify-center d-flex"
         >
           <v-chip class="mt-3" density="compact" color="orange">PREMIUM</v-chip>
@@ -65,7 +65,7 @@ import { useProfileStore } from '@/stores/profile'
 import { useLoadingStore } from '@/stores/loading'
 import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useReceiptStore } from '@/stores/receipt'
 import PreviewReceipt from '@/pages/Receipt/components/PreviewReceipt.vue'
 import CardProfile from './CardProfile.vue'
@@ -76,6 +76,7 @@ const user = auth.getCurrentUser
 const profile = useProfileStore()
 const loader = useLoadingStore()
 const searchText = ref()
+const store = useProfileStore()
 
 const headers = [
   { title: 'ID', key: 'id' },
@@ -88,4 +89,9 @@ const headers = [
   { title: 'Promotion', key: 'promotion.name', sortable: false },
   { title: 'Branch', key: 'branchName', sortable: false }
 ]
+
+onMounted(() => {
+  store.fetchCustomerReceipts()
+  store.fetchCustomer()
+})
 </script>

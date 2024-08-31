@@ -33,8 +33,7 @@ function handleSearchText(value: string) {
           <v-btn
             prepend-icon="mdi-plus"
             color="secondary"
-            rounded="xl"
-            class="w-100"
+            class="w-100 h-100"
             @click="store.openDialog()"
             >New</v-btn
           >

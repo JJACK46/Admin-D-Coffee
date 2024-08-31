@@ -17,8 +17,7 @@
         <v-col>
           <v-btn
             color="secondary"
-            rounded="xl"
-            class="w-100"
+            class="w-100 h-100"
             prepend-icon="mdi-plus"
             @click="store.openDialog()"
             >New</v-btn

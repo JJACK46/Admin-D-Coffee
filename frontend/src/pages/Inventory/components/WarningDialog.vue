@@ -19,7 +19,7 @@
           </p>
           <span class="text-red">
             Verified by
-            <span class="font-weight-bold">{{ auth.getCurrentUser?.username + ' ' }}</span>
+            <span class="font-weight-bold">{{ auth.getCurrentUser?.usr + ' ' }}</span>
           </span>
         </template>
         <template #actions>
