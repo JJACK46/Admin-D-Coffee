@@ -16,7 +16,7 @@ export class Attendance {
   @Column()
   date: string;
 
-  @ManyToOne(() => Employee, (emp) => emp.attendances, { eager: true })
+  @ManyToOne(() => Employee, (emp) => emp.attendances)
   @JoinTable()
   employee: Employee;
 

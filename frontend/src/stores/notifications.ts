@@ -29,7 +29,8 @@ export const useNotificationStore = defineStore('notifications', {
   },
   getters: {
     getItemsOrderLast: (state) => {
-      return state.items.reverse()
+      const sortedItem = state.items.reverse()
+      return sortedItem
     },
     hasNotification: (state) => {
       return state.items.length > 0

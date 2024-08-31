@@ -59,7 +59,7 @@ export const useAttendanceStore = defineStore('attendance', {
       } else {
         await this.service.create(<Attendance>{
           date: getDateNowString(),
-          employeeId: this.auth.getCurrentUser?.employeeId,
+          employeeId: this.auth.getCurrentUser?.empId,
           clockIn: getTimeNowString(),
           clockOut: '',
           timeWorked: 0,

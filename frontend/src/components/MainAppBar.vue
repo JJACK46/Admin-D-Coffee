@@ -107,11 +107,11 @@ const fieldAppMenu = [
         <v-btn :icon="notification.getNotificationIcon" @click="notification.setRead()"> </v-btn>
         <v-menu activator="parent" :close-on-content-click="false">
           <template #default>
-            <v-card rounded="lg">
+            <v-card>
               <v-card-title>
                 <v-row>
                   <v-col>
-                    <p cla>Notifications</p>
+                    <p>Notifications</p>
                   </v-col>
                   <v-spacer></v-spacer>
                   <v-col cols="auto">

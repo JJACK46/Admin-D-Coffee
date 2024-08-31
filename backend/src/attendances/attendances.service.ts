@@ -36,9 +36,9 @@ export class AttendancesService {
   }
 
   async findAllWhereEmployee(id: number) {
-    const user = await this.repoEmp.findOneBy({ id });
+    // const user = await this.repoEmp.findOneBy({ id });
     return this.repo.find({
-      where: { employee: user },
+      where: { employee: { id } },
     });
   }
 
