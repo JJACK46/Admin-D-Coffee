@@ -54,6 +54,9 @@
     "Settings": "Settings",
     "Dark Theme": "Dark Theme",
     "Notifications": "Notifications",
+    "clockIn": "Clock In",
+    "clockOut": "Clock Out",
+    "later": "Later",
     "$vuetify": {
         "badge": "Badge",
         "open": "Open",

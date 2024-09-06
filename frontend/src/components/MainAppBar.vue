@@ -30,7 +30,6 @@ watch(
   () => toggleDark.value,
   (val) => {
     theme.global.name.value = val ? 'dark' : 'light'
-    colorAppBar.value = val ? 'fifth' : 'primary'
   }
 )
 
@@ -65,7 +64,7 @@ const fieldAppMenu = computed(() => [
 </script>
 
 <template>
-  <v-app-bar :color="colorAppBar" elevation="1" app>
+  <v-app-bar color="primary" elevation="1" app>
     <template #prepend>
       <v-app-bar-nav-icon
         v-if="useDisplay().mdAndDown.value"

@@ -54,6 +54,9 @@
     "Profile": "โปรไฟล์",
     "Settings": "ตั้งค่า",
     "Dark Theme": "โหมดมืด",
+    "clockIn": "เข้างาน",
+    "clockOut": "ออกงาน",
+    "later": "ภายหลัง",
     "$vuetify": {
         "badge": "สัญลักษณ์",
         "open": "เปิด",

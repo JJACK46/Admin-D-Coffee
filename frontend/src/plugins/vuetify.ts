@@ -20,13 +20,19 @@ const vuetify = createVuetify({
           secondary: '#654335',
           third: '#51312E',
           fourth: '#432D2B',
-          fifth: '#322626'
+          fifth: '#322626',
+          background: '#FFFFFF',
+          surface: '#FFFFFF',
+          'surface-bright': '#FFFFFF',
+          'surface-light': '#EEEEEE',
+          'surface-variant': '#424242',
+          'on-surface-variant': '#EEEEEE'
         }
       },
       dark: {
         dark: true,
         colors: {
-          primary: '#6F4E37',
+          primary: '#3D251E',
           secondary: '#654335',
           third: '#51312E',
           fourth: '#432D2B',

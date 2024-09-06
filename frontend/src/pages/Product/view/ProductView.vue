@@ -18,6 +18,7 @@
           <v-btn
             color="secondary"
             class="w-100 h-100"
+            variant="flat"
             prepend-icon="mdi-plus"
             @click="store.openDialog()"
             >New</v-btn
@@ -27,9 +28,9 @@
     </template>
     <template #imageName="{ item }">
       <v-img
+        v-if="item.imageName"
         width="100"
         height="100"
-        v-if="item.imageName"
         :src="`${baseURLImage}/products/${item.imageName}`"
         :alt="'Image of ' + item.imageName"
       ></v-img>

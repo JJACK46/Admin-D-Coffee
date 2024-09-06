@@ -27,15 +27,10 @@ function handleSearch(value: string) {
         <v-col>
           <SearchTableField @get-search-text="handleSearch" />
         </v-col>
-        <v-col>
-          <v-btn
-            color="secondary"
-            rounded="xl"
-            variant="flat"
-            class="h-100 w-100"
-            @click="store.openDialog"
-            >Attendance Work</v-btn
-          >
+        <v-col cols="3">
+          <v-btn color="secondary" variant="flat" class="h-100 w-100" @click="store.openDialog">{{
+            t('quickAct')
+          }}</v-btn>
         </v-col>
       </v-row>
     </template>

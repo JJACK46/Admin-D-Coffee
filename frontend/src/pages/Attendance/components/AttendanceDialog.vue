@@ -1,18 +1,19 @@
 <template>
   <v-dialog v-model="attend.isDialogOpen" persistent>
-    <v-card class="mx-auto custom-card" style="overflow-y: hidden" rounded="lg">
-      <v-progress-linear v-if="loader.isLoading" indeterminate></v-progress-linear>
-      <h1 class="mt-7 text-center">Attendance | ลงเวลาเข้างาน</h1>
+    <v-card class="mx-auto pa-5" :loading="loader.isLoading">
+      <template #title>
+        <h1 class="text-center">{{ t('attendance') }}</h1>
+      </template>
       <template #actions>
-        <v-row class="text-center justify-center pa-10">
+        <v-row class="text-center justify-center">
           <v-btn color="green text-h6" prepend-icon="mdi-clock-in" @click="attend.save()">
-            CLOCK IN | เข้างาน
+            {{ t('clockIn') }}
           </v-btn>
           <v-btn color="grey text-h6" prepend-icon="mdi-clock" @click="attend.closeDialog()">
-            LATER | ภายหลัง
+            {{ t('later') }}
           </v-btn>
           <v-btn color="red text-h6" prepend-icon="mdi-clock-out" @click="attend.save()">
-            CLOCK OUT | ออกงาน
+            {{ t('clockOut') }}
           </v-btn>
         </v-row>
       </template>
@@ -23,13 +24,9 @@
 <script setup lang="ts">
 import { useLoadingStore } from '@/stores/loading'
 import { useAttendanceStore } from '../../../stores/attendance'
+import { useLocale } from 'vuetify'
 
+const { t } = useLocale()
 const attend = useAttendanceStore()
 const loader = useLoadingStore()
 </script>
-
-<style scoped>
-.custom-card {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-</style>

@@ -13,7 +13,6 @@
           <v-select
             v-if="isAdmin"
             hide-details
-            class="mt-2"
             variant="outlined"
             density="compact"
             label="Branch"

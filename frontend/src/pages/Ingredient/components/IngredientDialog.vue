@@ -18,10 +18,16 @@ const form = ref<boolean>()
       <v-form v-model="form" class="pa-5">
         <v-row>
           <v-col cols="12">
-            <v-text-field v-model="store.tempItem.name" label="Name"> </v-text-field>
+            <v-text-field v-model="store.tempItem.name" label="Name" variant="outlined">
+            </v-text-field>
           </v-col>
           <v-col cols="12">
-            <v-select v-model="store.tempItem.unit" :items="defaultUnitTypes" label="Unit">
+            <v-select
+              v-model="store.tempItem.unit"
+              :items="defaultUnitTypes"
+              label="Unit"
+              variant="outlined"
+            >
             </v-select>
           </v-col>
         </v-row>

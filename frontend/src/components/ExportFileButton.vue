@@ -1,5 +1,5 @@
 <template>
-  <v-btn-group class="h-100 d-flex justify-center" rounded="pill" divided color="fourth">
+  <v-btn-group class="h-100 d-flex justify-center" divided color="primary">
     <v-btn @click="$props.callbackPdf"> {{ t('quickExp') }} </v-btn>
     <v-btn class="ma-0" size="small" icon>
       <v-icon icon="mdi-chevron-down" />
