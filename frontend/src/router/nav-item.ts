@@ -13,82 +13,82 @@ export type navItem = {
 
 export const adminNavItems: navItem[] = [
   {
-    title: 'Home',
+    title: 'home',
     icon: 'mdi-home',
     path: '/'
   },
   {
-    title: 'Report',
+    title: 'report',
     icon: 'mdi-notebook',
     path: '/report'
   },
   {
-    title: 'Management',
+    title: 'management',
     icon: 'mdi-pencil',
     menu: [
       {
-        title: 'Inventory',
+        title: 'inventory',
         path: '/inventory',
         icon: 'mdi-warehouse'
       },
       {
-        title: 'Payroll',
+        title: 'payroll',
         icon: 'mdi-currency-usd',
         path: '/payroll'
       },
       {
-        title: 'Customer',
+        title: 'customer',
         path: '/customer',
         icon: 'mdi-wallet-membership'
       },
       {
-        title: 'Promotion',
+        title: 'promotion',
         path: '/promotion',
         icon: 'mdi-ticket-percent-outline'
       },
       {
-        title: 'Product',
+        title: 'product',
         path: '/product',
         icon: 'mdi-food'
       },
       {
-        title: 'Employee',
+        title: 'employee',
         path: '/employee',
         icon: 'mdi-account-group-outline'
       },
       {
-        title: 'Users',
+        title: 'user',
         path: '/users',
         icon: 'mdi-account-multiple'
       },
       {
-        title: 'Branch',
+        title: 'branch',
         path: '/branch',
         icon: 'mdi-store'
       },
       {
-        title: 'Ingredient',
+        title: 'ingredient',
         path: '/ingredient',
         icon: 'mdi-coffee'
       }
     ]
   },
   {
-    title: 'Records',
+    title: 'records',
     icon: 'mdi-note-text',
     menu: [
       {
-        title: 'Attendance',
+        title: 'attendance',
         path: '/attendance',
         icon: 'mdi-clock'
       },
       {
-        title: 'Receipt',
+        title: 'receipt',
         path: '/receipt',
         icon: 'mdi-note-text'
       },
       {
-        title: 'Bill',
+        title: 'bill',
         path: '/bill',
         icon: 'mdi-note-text'
       }
@@ -100,7 +100,7 @@ export const adminNavItems: navItem[] = [
     path: '/pos'
   },
   {
-    title: 'About',
+    title: 'about',
     icon: 'mdi-information',
     path: '/about'
   }

@@ -1,7 +1,7 @@
 <template>
   <PromotionDialog />
   <TableLayout
-    title="Promotion Management"
+    :title="`${t('Promotion Management')}`"
     has-action
     :items="store.promotions"
     :headers="store.headers"
@@ -51,9 +51,10 @@ import PromotionDialog from '../components/PromotionDialog.vue'
 import { usePromotionStore } from '@/stores/promotion'
 import { ref } from 'vue'
 import SearchTableField from '@/components/SearchTableField.vue'
+import { useLocale } from 'vuetify'
 
 const store = usePromotionStore()
-
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearchText(value: string) {

@@ -3,7 +3,7 @@ import { baseURLImage } from '@/services/http'
 import { useAuthStore } from '@/stores/auth'
 import { useMainDrawerStore } from '@/stores/drawer'
 import { useNotificationStore } from '@/stores/notifications'
-import { onBeforeUnmount, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useDisplay, useLocale, useTheme } from 'vuetify'
 
 const auth = useAuthStore()
@@ -21,6 +21,7 @@ function clearAndClose() {
   closeNotificationDialog()
 }
 
+const { t } = useLocale()
 const theme = useTheme()
 const toggleDark = ref(true)
 const colorAppBar = ref('fifth')
@@ -57,10 +58,10 @@ const handleLocale = () => {
   }
 }
 
-const fieldAppMenu = [
-  { icon: 'mdi-account-outline', title: 'Profile', path: '/profile' },
-  { icon: 'mdi-cog-outline', title: 'Settings', path: '' }
-]
+const fieldAppMenu = computed(() => [
+  { icon: 'mdi-account-outline', title: t('Profile'), path: '/profile' },
+  { icon: 'mdi-cog-outline', title: t('Settings'), path: '' }
+])
 </script>
 
 <template>
@@ -91,8 +92,6 @@ const fieldAppMenu = [
         location="top"
         :color="notification.tempSnackbar.color"
         close-delay="1100"
-        rounded="lg"
-        class="elevation-0"
       >
         <span class="d-flex justify-center font-weight-bold text-body-2">
           {{ notification.tempSnackbar.text }}
@@ -111,7 +110,7 @@ const fieldAppMenu = [
               <v-card-title>
                 <v-row>
                   <v-col>
-                    <p>Notifications</p>
+                    <p>{{ t('Notifications') }}</p>
                   </v-col>
                   <v-spacer></v-spacer>
                   <v-col cols="auto">
@@ -143,7 +142,7 @@ const fieldAppMenu = [
                 </v-list>
               </v-card-text>
               <v-card-text v-else class="text-center">
-                <v-list-item title="No data"> </v-list-item>
+                <v-list-item :title="`${t('noData')}`"> </v-list-item>
               </v-card-text>
               <v-card-actions class="justify-end">
                 <v-btn @click="clearAndClose" variant="plain" size="small"> Clear </v-btn>
@@ -152,7 +151,7 @@ const fieldAppMenu = [
           </template>
         </v-menu>
       </div>
-      <v-menu name="profile" :close-on-content-click="false">
+      <v-menu name="avatar menu" :close-on-content-click="false">
         <template #activator="{ props }">
           <v-avatar v-bind="props" class="mr-2" style="cursor: pointer">
             <v-img :src="`${baseURLImage}/employees/${auth.getCurrentUser?.img}`">
@@ -161,7 +160,7 @@ const fieldAppMenu = [
               </template> </v-img
           ></v-avatar>
         </template>
-        <v-list rounded="lg">
+        <v-list>
           <v-list-item
             v-for="item in fieldAppMenu"
             :key="item.title"
@@ -170,18 +169,18 @@ const fieldAppMenu = [
             >{{ item.title }}
           </v-list-item>
           <v-list-item
-            :title="`Language: ${locale.current.value.toUpperCase()}`"
+            :title="`${locale.current.value.toUpperCase()}`"
             prepend-icon="mdi-translate"
             @click="handleLocale"
           >
           </v-list-item>
-          <v-list-item title="Dark Theme" prepend-icon="mdi-weather-night">
+          <v-list-item :title="`${t('Dark Theme')}`" prepend-icon="mdi-weather-night">
             <template #append>
               <v-switch class="ml-3 d-flex" color="fourth" v-model="toggleDark"> </v-switch>
             </template>
           </v-list-item>
           <v-list-item
-            title="Logout"
+            :title="`${t('logout')}`"
             prepend-icon="mdi-logout"
             @click="auth.logout()"
           ></v-list-item>

@@ -4,9 +4,10 @@ import IngredientDialog from '../components/IngredientDialog.vue'
 import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'
+import { useLocale } from 'vuetify'
 
 const store = useIngredientStore()
-
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearch(value: string) {
@@ -17,7 +18,7 @@ function handleSearch(value: string) {
 <template>
   <IngredientDialog />
   <TableLayout
-    title="Ingredient Management"
+    :title="`${t('Ingredient Management')}`"
     :items="store.ingredients"
     :headers="store.headers"
     :callback-func="store.fetchAll"

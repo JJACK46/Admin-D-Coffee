@@ -1,6 +1,6 @@
 <template>
   <v-btn-group class="h-100 d-flex justify-center" rounded="pill" divided color="fourth">
-    <v-btn @click="$props.callbackPdf"> quick export </v-btn>
+    <v-btn @click="$props.callbackPdf"> {{ t('quickExp') }} </v-btn>
     <v-btn class="ma-0" size="small" icon>
       <v-icon icon="mdi-chevron-down" />
       <v-menu activator="parent">
@@ -21,6 +21,9 @@
 
 <script setup lang="ts">
 import { exportDataToCSV } from '@/utils/csv'
+import { useLocale } from 'vuetify'
+
+const { t } = useLocale()
 
 defineProps<{
   callbackPdf: () => void

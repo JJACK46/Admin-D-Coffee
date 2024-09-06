@@ -2,7 +2,7 @@
   <StockTakingDialog />
   <ReplenishmentDialog />
   <MainTable
-    title="Inventory Management"
+    :title="`${t('Inventory Management')}`"
     :headers="store.headers"
     :items="store.getInventoryItems ?? []"
     has-custom-items
@@ -46,7 +46,7 @@
             <v-menu>
               <template #activator="{ props }">
                 <v-btn prepend-icon="mdi-open-in-app" v-bind="props" variant="flat"
-                  >Quick Actions
+                  >{{ t('quickAct') }}
                 </v-btn>
               </template>
               <v-list style="cursor: pointer">
@@ -94,11 +94,13 @@ import { useReplenishmentStore } from '../../../stores/replenishment'
 import { useAuthStore } from '@/stores/auth'
 import ExportFileButton from '@/components/ExportFileButton.vue'
 import { Role } from '@/router/enum'
+import { useLocale } from 'vuetify'
 const store = useInventoryStore()
 const storeStock = useStockTakingStore()
 const storeRep = useReplenishmentStore()
 const auth = useAuthStore()
 const isAdmin = ref()
+const { t } = useLocale()
 
 onMounted(async () => {
   isAdmin.value = await auth.isAuthorized([Role.admin])

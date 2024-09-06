@@ -7,8 +7,9 @@ import { ref } from 'vue'
 import { baseURLImage } from '@/services/http'
 import ImageColumnTable from '@/components/ImageColumnTable.vue'
 import type { User } from '../../../types/user'
+import { useLocale } from 'vuetify'
 const store = useUserStore()
-
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearchText(value: string) {
@@ -26,7 +27,7 @@ function handleImageUrl(item: User) {
 <template>
   <UserDialog />
   <Table
-    title="User Management"
+    :title="`${t('User Management')}`"
     :callback-func="store.getAllUsers"
     :search="searchText"
     has-action

@@ -3,9 +3,10 @@ import TableLayout from '@/components/MainTable.vue'
 import { useAttendanceStore } from '@/stores/attendance'
 import { ref } from 'vue'
 import SearchTableField from '@/components/SearchTableField.vue'
+import { useLocale } from 'vuetify'
 
 const store = useAttendanceStore()
-
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearch(value: string) {
@@ -15,7 +16,7 @@ function handleSearch(value: string) {
 
 <template>
   <TableLayout
-    title="Attendance"
+    :title="`${t('Attendance Management')}`"
     :callback-func="store.fetchAll"
     :items="store.items"
     :headers="store.headers"

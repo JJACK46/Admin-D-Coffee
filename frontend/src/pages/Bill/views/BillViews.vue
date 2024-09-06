@@ -5,7 +5,9 @@ import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'
 import BillAddDialog from '../components/BillAddDialog.vue'
+import { useLocale } from 'vuetify'
 const store = useBillStore()
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearchText(value: string) {
@@ -16,7 +18,7 @@ function handleSearchText(value: string) {
 <template>
   <BillAddDialog />
   <TableLayout
-    title="Bill Records"
+    :title="`${t('Bill Records')}`"
     :search="searchText"
     :items="store.getBills"
     :headers="store.headers"

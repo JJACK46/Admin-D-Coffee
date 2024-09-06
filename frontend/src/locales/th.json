@@ -11,14 +11,57 @@
     "mOverM": "เดือนต่อเดือน",
     "yOverY": "ปีต่อปี",
     "more": "เพิ่มเติม",
+    "home": "หน้าหลัก",
+    "report": "รายงาน",
+    "inventory": "คลัง",
+    "payroll": "เงินเดือน",
+    "customer": "ลูกค้า",
+    "promotion": "โปรโมชั่น",
+    "product": "สินค้า",
+    "employee": "พนักงาน",
+    "user": "ผู้ใช้งาน",
+    "users": "เหล่าผู้ใช้งาน",
+    "branch": "สาขา",
+    "ingredient": "วัตถุดิบ",
+    "management": "การจัดการ",
+    "records": "บันทึก",
+    "attendance": "การเข้างาน",
+    "receipt": "ใบเสร็จ",
+    "bill": "ใบแจ้งหนี้",
+    "about": "เกี่ยวกับ",
+    "logout": "ออกจากระบบ",
+    "login": "เข้าสู่ระบบ",
+    "username": "ชื่อผู้ใช้งาน",
+    "password": "รหัสผ่าน",
+    "history": "ประวัติ",
+    "quickAct": "กระทำด่วน",
+    "quickExp": "ส่งออกด่วน",
+    "POS": "POS",
+    "Inventory Management": "การจัดการคลัง",
+    "Payroll Management": "การจัดการเงินเดือน",
+    "Customer Management": "การจัดการลูกค้า",
+    "Promotion Management": "การจัดการโปรโมชั่น",
+    "Product Management": "การจัดการสินค้า",
+    "Employee Management": "การจัดการพนักงาน",
+    "User Management": "การจัดการผู้ใช้งาน",
+    "Branch Management": "การจัดการสาขา",
+    "Ingredient Management": "การจัดการวัตถุดิบ",
+    "Attendance Management": "การจัดการการเข้างาน",
+    "Receipt Records": "บันทึกใบเสร็จ",
+    "Bill Records": "บันทึกใบแจ้งหนี้",
+    "Notifications": "การแจ้งเตือน",
+    "Report": "รายงาน",
+    "Profile": "โปรไฟล์",
+    "Settings": "ตั้งค่า",
+    "Dark Theme": "โหมดมืด",
     "$vuetify": {
         "badge": "สัญลักษณ์",
-        "open": "Open",
+        "open": "เปิด",
         "close": "ปิด",
-        "dismiss": "Dismiss",
+        "dismiss": "ยกเลิก",
         "confirmEdit": {
-            "ok": "OK",
-            "cancel": "Cancel"
+            "ok": "ตกลง",
+            "cancel": "ยกเลิก"
         },
         "dataIterator": {
             "noResultsText": "ไม่พบข้อมูลที่ค้นหา",
@@ -46,18 +89,18 @@
             "pageText": "{0}-{1} จาก {2}"
         },
         "dateRangeInput": {
-            "divider": "to"
+            "divider": "ถึง"
         },
         "datePicker": {
-            "itemsSelected": "{0} selected",
+            "itemsSelected": "{0} ที่เลือก",
             "range": {
-                "title": "Select dates",
-                "header": "Enter dates"
+                "title": "เลือกวันที่",
+                "header": "ระบุวันที่"
             },
-            "title": "Select date",
-            "header": "Enter date",
+            "title": "เลือกวันที่",
+            "header": "ระบุวันที่",
             "input": {
-                "placeholder": "Enter date"
+                "placeholder": "ระบุวันที่"
             }
         },
         "noDataText": "ไม่มีข้อมูล",
@@ -70,13 +113,13 @@
         },
         "calendar": {
             "moreEvents": "มีอีก {0}",
-            "today": "Today"
+            "today": "วันนี้"
         },
         "input": {
-            "clear": "Clear {0}",
+            "clear": "ล้าง {0}",
             "prependAction": "{0} prepended action",
             "appendAction": "{0} appended action",
-            "otp": "Please enter OTP character {0}"
+            "otp": "กรุณาป้อนรหัส OTP {0}"
         },
         "fileInput": {
             "counter": "{0} ไฟล์",
@@ -85,7 +128,7 @@
         "timePicker": {
             "am": "AM",
             "pm": "PM",
-            "title": "Select Time"
+            "title": "เลือกเวลา"
         },
         "pagination": {
             "ariaLabel": {
@@ -94,23 +137,23 @@
                 "previous": "หน้าที่แล้ว",
                 "page": "ไปที่หน้า {0}",
                 "currentPage": "หน้าปัจจุบัน (หน้า {0})",
-                "first": "First page",
-                "last": "Last page"
+                "first": "หน้าแรก",
+                "last": "หน้าสุดท้าย"
             }
         },
         "stepper": {
-            "next": "Next",
-            "prev": "Previous"
+            "next": "ต่อไป",
+            "prev": "ก่อนหน้า"
         },
         "rating": {
             "ariaLabel": {
-                "item": "Rating {0} of {1}"
+                "item": "คะแนน {0} of {1}"
             }
         },
-        "loading": "Loading...",
+        "loading": "กำลังโหลด...",
         "infiniteScroll": {
-            "loadMore": "Load more",
-            "empty": "No more"
+            "loadMore": "โหลดเพิ่มเติม",
+            "empty": "ว่างเปล่า"
         }
     }
 }

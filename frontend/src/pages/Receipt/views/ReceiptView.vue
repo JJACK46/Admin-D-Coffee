@@ -1,7 +1,7 @@
 <template>
   <PreviewReceipt></PreviewReceipt>
   <TableLayout
-    title="Receipt Records"
+    :title="`${t('Receipt Records')}`"
     :callback-func="store.fetchReceipts"
     show-expand
     :items="store.receipts"
@@ -46,9 +46,10 @@ import { useReceiptStore } from '@/stores/receipt'
 import PreviewReceipt from '../components/PreviewReceipt.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'
+import { useLocale } from 'vuetify'
 
 const store = useReceiptStore()
-
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearchText(value: string) {

@@ -1,7 +1,7 @@
 <template>
   <CustomerDialog />
   <TableLayout
-    title="Customer Management"
+    :title="`${t('Customer Management')}`"
     :callback-func="store.fetchAll"
     :items="store.getCustomers"
     :headers="store.headers"
@@ -43,9 +43,10 @@ import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'
 import { baseURLImage } from '@/services/http'
 import ImageColumnTable from '@/components/ImageColumnTable.vue'
+import { useLocale } from 'vuetify'
 
 const store = useCustomerStore()
-
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearchText(value: string) {

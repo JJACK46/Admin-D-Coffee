@@ -1,7 +1,7 @@
 <template>
   <EmployeeDialog />
   <TableLayout
-    title="Employee List"
+    :title="`${t('Employee Management')}`"
     :search="searchText"
     :items="store.employees"
     :headers="store.headers"
@@ -46,9 +46,10 @@ import { ref } from 'vue'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { baseURLImage } from '@/services/http'
 import ImageColumnTable from '@/components/ImageColumnTable.vue'
+import { useLocale } from 'vuetify'
 
 const store = useEmployeeStore()
-
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearchText(value: string) {

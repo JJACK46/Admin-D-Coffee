@@ -26,8 +26,7 @@ export const usePayrollStore = defineStore('payroll', {
         { title: 'Name', key: 'employee.fullName', sortable: false },
         { title: 'Net to pay', key: 'totalEarnings', sortable: false },
         { title: 'Due Date', key: 'dueDate', sortable: false },
-        { title: 'Status', key: 'status', sortable: false },
-        { title: 'Action', key: 'actions', sortable: false }
+        { title: 'Status', key: 'status', sortable: false }
       ],
       isNewSlip: ref(false),
       availableEmployee: ref<Employee[]>(),

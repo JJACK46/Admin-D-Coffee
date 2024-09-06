@@ -1,7 +1,7 @@
 <template>
   <ProductDialog />
   <TableLayout
-    title="Product Management"
+    :title="`${t('Product Management')}`"
     :items="store.products"
     :headers="store.headers"
     customColumnName="imageName"
@@ -49,9 +49,10 @@ import ProductDialog from '../components/ProductDialog.vue'
 import { baseURLImage } from '@/services/http'
 import SearchTableField from '@/components/SearchTableField.vue'
 import { ref } from 'vue'
+import { useLocale } from 'vuetify'
 
 const store = useProductStore()
-
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearchText(value: string) {

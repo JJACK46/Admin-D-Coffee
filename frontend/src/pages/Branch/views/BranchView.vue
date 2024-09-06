@@ -4,9 +4,10 @@ import BranchDialog from '../components/BranchDialog.vue'
 import { useBranchStore } from '@/stores/branch'
 import TableLayout from '@/components/MainTable.vue'
 import SearchTableField from '@/components/SearchTableField.vue'
+import { useLocale } from 'vuetify'
 
 const store = useBranchStore()
-
+const { t } = useLocale()
 const searchText = ref()
 
 function handleSearchText(value: string) {
@@ -17,7 +18,7 @@ function handleSearchText(value: string) {
 <template>
   <BranchDialog></BranchDialog>
   <TableLayout
-    title="Branch Management"
+    :title="`${t('Branch Management')}`"
     has-action
     :items="store.branchList"
     :headers="store.headers"

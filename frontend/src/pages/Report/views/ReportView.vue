@@ -2,7 +2,8 @@
 import { useLoadingStore } from '@/stores/loading'
 import { useReportStore } from '../../../stores/report'
 import { onMounted } from 'vue'
-
+import { useLocale } from 'vuetify'
+const { t } = useLocale()
 const loader = useLoadingStore()
 const store = useReportStore()
 
@@ -13,7 +14,7 @@ onMounted(() => {
 
 <template>
   <v-container fluid class="h-100">
-    <v-card rounded="xl" class="pa-5 h-100" title="Sales Report">
+    <v-card rounded="xl" class="pa-5 h-100" :title="`${t('Report')}`">
       <v-card-text>
         <v-row>
           <v-col cols="4">
