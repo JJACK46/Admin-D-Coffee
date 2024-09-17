@@ -9,9 +9,13 @@ import { computed } from 'vue'
 import MenuCard from '../components/MenuCard.vue'
 import { useLoadingStore } from '@/stores/loading'
 import MembershipDialog from '../components/MembershipDialog.vue'
+import { useDisplay, useLocale } from 'vuetify'
+import router from '@/router'
+import { useCurrentTime } from '@/utils/date'
 
 const store = usePosStore()
 const loader = useLoadingStore()
+const { t } = useLocale()
 
 const fieldData = computed(() => {
   return [
@@ -20,6 +24,8 @@ const fieldData = computed(() => {
     { tab: 'Foods', products: store.getAllFoods }
   ]
 })
+
+const isMobileView = computed(() => useDisplay().mobile.value)
 
 onMounted(() => {
   store.fetchMenu()
@@ -33,8 +39,25 @@ onMounted(() => {
   <PromotionDialog />
   <v-container fluid>
     <OrderSheet />
-    <v-tabs v-model="store.tab" class="rounded-lg elevation-2" color="primary">
-      <v-tab v-for="item in store.typesOfProducts" :key="item" fixed>
+    <v-card class="mb-5">
+      <template #text>
+        <v-row no-gutters class="d-flex align-center justify-end">
+          <v-col
+            ><v-btn @click="() => router.back()" flat>{{ t('Back') }}</v-btn>
+          </v-col>
+          <v-col>
+            <p class="d-flex">{{ useCurrentTime() }}</p>
+          </v-col>
+          <v-col cols="auto">
+            <v-btn :disabled="!isMobileView" @click="() => (store.drawerOpen = true)">
+              open operator
+            </v-btn>
+          </v-col>
+        </v-row>
+      </template>
+    </v-card>
+    <v-tabs v-model="store.tab" class="rounded-lg elevation-2" color="primary" grow>
+      <v-tab v-for="item in store.typesOfProducts" :key="item">
         {{ item }}
       </v-tab>
       <v-tab value="Search" class="pa-0" fixed>

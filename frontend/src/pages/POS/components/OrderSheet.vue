@@ -7,7 +7,7 @@ const store = usePosStore()
 </script>
 
 <template>
-  <v-navigation-drawer location="right" width="512" class="py-2">
+  <v-navigation-drawer v-model="store.drawerOpen" location="right" width="512" class="py-2">
     <v-table fixed-header :height="useDisplay().xlAndUp.value ? 500 : 320">
       <template #top>
         <v-row>

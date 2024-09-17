@@ -9,9 +9,9 @@ export function exportDataToCSV(data: Record<string, any>[], filename: string): 
   })
 
   const blob: Blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' })
-
-  if (window.navigator.msSaveOrOpenBlob) {
-    window.navigator.msSaveOrOpenBlob(blob, filename)
+  const nav = window.navigator as any
+  if (nav.msSaveOrOpenBlob) {
+    nav.msSaveOrOpenBlob(blob, filename)
   } else {
     const link: HTMLAnchorElement = document.createElement('a')
     link.href = URL.createObjectURL(blob)

@@ -1,5 +1,7 @@
 <template>
   <v-layout class="h-screen overflow-auto">
-    <RouterView />
+    <v-main>
+      <RouterView />
+    </v-main>
   </v-layout>
 </template>

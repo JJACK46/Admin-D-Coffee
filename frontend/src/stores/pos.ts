@@ -54,7 +54,8 @@ export const usePosStore = defineStore('pos', {
       selectMembership: ref<Customer | null>(null),
       usedPoint: ref(0),
       updatedPoint: ref(0),
-      earnPoint: ref(50)
+      earnPoint: ref(50),
+      drawerOpen: ref(true)
     }
   },
   getters: {

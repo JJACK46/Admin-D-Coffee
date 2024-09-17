@@ -49,7 +49,7 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
         roles: [Role.admin, Role.manager, Role.employee],
-        layout: 'focus'
+        layout: 'full'
       }
     },
     {

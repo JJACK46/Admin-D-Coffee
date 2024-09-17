@@ -3,13 +3,18 @@ import { baseURLImage } from '@/services/http'
 import { useAuthStore } from '@/stores/auth'
 import { useMainDrawerStore } from '@/stores/drawer'
 import { useNotificationStore } from '@/stores/notifications'
-import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { getColorByMode } from '@/utils/colors'
+import { useCurrentTime } from '@/utils/date'
+import { computed, ref, watch } from 'vue'
 import { useDisplay, useLocale, useTheme } from 'vuetify'
 
 const auth = useAuthStore()
 const drawer = useMainDrawerStore()
 const notification = useNotificationStore()
 const toggleNotifications = ref(false)
+const { t } = useLocale()
+const theme = useTheme()
+const toggleDark = ref(true)
 
 function closeNotificationDialog() {
   notification.setRead()
@@ -21,29 +26,12 @@ function clearAndClose() {
   closeNotificationDialog()
 }
 
-const { t } = useLocale()
-const theme = useTheme()
-const toggleDark = ref(true)
-const colorAppBar = ref('fifth')
-
 watch(
   () => toggleDark.value,
   (val) => {
     theme.global.name.value = val ? 'dark' : 'light'
   }
 )
-
-const useCurrentTime = () => {
-  const currentTime = ref(new Date().toLocaleTimeString('th-TH', { hour12: false }))
-  const updateCurrentTime = () => {
-    currentTime.value = new Date().toLocaleTimeString('th-TH', { hour12: false })
-  }
-  const updateTimeInterval = setInterval(updateCurrentTime, 1000)
-  onBeforeUnmount(() => {
-    clearInterval(updateTimeInterval)
-  })
-  return currentTime
-}
 
 const currentTime = useCurrentTime()
 
@@ -113,7 +101,12 @@ const fieldAppMenu = computed(() => [
                   </v-col>
                   <v-spacer></v-spacer>
                   <v-col cols="auto">
-                    <v-btn variant="text" size="small" icon="mdi-cog-outline"></v-btn>
+                    <v-btn
+                      variant="text"
+                      size="small"
+                      :color="getColorByMode"
+                      icon="mdi-cog-outline"
+                    ></v-btn>
                   </v-col>
                 </v-row>
               </v-card-title>
@@ -175,7 +168,7 @@ const fieldAppMenu = computed(() => [
           </v-list-item>
           <v-list-item :title="`${t('Dark Theme')}`" prepend-icon="mdi-weather-night">
             <template #append>
-              <v-switch class="ml-3 d-flex" color="fourth" v-model="toggleDark"> </v-switch>
+              <v-switch class="ml-3 d-flex" color="white" v-model="toggleDark"> </v-switch>
             </template>
           </v-list-item>
           <v-list-item
