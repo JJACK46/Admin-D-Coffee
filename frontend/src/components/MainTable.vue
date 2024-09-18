@@ -33,8 +33,29 @@ onMounted(() => {
   }
 })
 
-const loader = useLoadingStore()
+const skip = ref(0)
+const take = ref(10)
 
+function loadItems({
+  page,
+  itemsPerPage,
+  sortBy
+}: {
+  page: number
+  itemsPerPage: number
+  sortBy: any
+}) {
+  if (props.callbackFunc) {
+    // const start = (page - 1) * itemsPerPage
+    // const end = start + itemsPerPage
+    skip.value = (page - 1) * itemsPerPage
+    take.value = itemsPerPage
+
+    props.callbackFunc(skip.value, take.value)
+  }
+}
+
+const loader = useLoadingStore()
 const expands = ref([])
 </script>
 
@@ -54,6 +75,7 @@ const expands = ref([])
         "
         class="h-100 overflow-x-auto"
         :show-expand="$props.showExpand"
+        @update:options="loadItems"
       >
         <template #top>
           <v-card class="pa-5 elevation-0">

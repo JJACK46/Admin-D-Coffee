@@ -21,7 +21,9 @@ export const useReceiptStore = defineStore('receipt', {
         { title: 'Payment Type', key: 'paymentType', sortable: false },
         { title: 'Employee', key: 'employeeName', sortable: false },
         { title: 'Branch', key: 'branchName', sortable: false }
-      ]
+      ],
+      skipItems: ref(0),
+      limitItems: ref(10)
     }
   },
   getters: {
@@ -36,8 +38,8 @@ export const useReceiptStore = defineStore('receipt', {
       this.resetItem()
       this.dialogPreview = false
     },
-    async fetchReceipts() {
-      this.receipts = await ReceiptService.getAll()
+    async fetchReceipts(skip: number, take: number) {
+      this.receipts = await ReceiptService.getAll(skip, take)
     },
     async fetchFilterReceipts() {
       if (this.filterQuery.month > 0 || this.filterQuery.year > 0) {
@@ -46,7 +48,7 @@ export const useReceiptStore = defineStore('receipt', {
           this.filterQuery.month
         )
       } else {
-        this.fetchReceipts()
+        this.fetchReceipts(this.skipItems, this.limitItems)
       }
     },
     async deleteItem(index: number) {
@@ -54,7 +56,7 @@ export const useReceiptStore = defineStore('receipt', {
         await ReceiptService.delete(index)
         this.resetItem()
       }
-      this.fetchReceipts()
+      this.fetchReceipts(this.skipItems, this.limitItems)
     },
     resetItem() {
       this.tempItem = { ...defaultReceipt }
@@ -63,7 +65,7 @@ export const useReceiptStore = defineStore('receipt', {
       if (item) {
         await ReceiptService.create(item)
       }
-      this.fetchReceipts()
+      this.fetchReceipts(this.skipItems, this.limitItems)
       this.closeDialog()
     },
     exportOnePdf(pdfRef: HTMLElement) {

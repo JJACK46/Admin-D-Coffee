@@ -1,6 +1,6 @@
 <template>
   <PreviewReceipt></PreviewReceipt>
-  <TableLayout
+  <MainTable
     :title="`${t('Receipt Records')}`"
     :callback-func="store.fetchReceipts"
     show-expand
@@ -37,11 +37,11 @@
         </v-row>
       </div>
     </template>
-  </TableLayout>
+  </MainTable>
 </template>
 
 <script setup lang="ts">
-import TableLayout from '@/components/MainTable.vue'
+import MainTable from '@/components/MainTable.vue'
 import { useReceiptStore } from '@/stores/receipt'
 import PreviewReceipt from '../components/PreviewReceipt.vue'
 import SearchTableField from '@/components/SearchTableField.vue'

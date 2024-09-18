@@ -7,6 +7,7 @@ import {
   Delete,
   UseInterceptors,
   ClassSerializerInterceptor,
+  Query,
 } from '@nestjs/common';
 import { ReceiptsService } from './receipts.service';
 import { CreateReceiptDto } from './dto/create-receipt.dto';
@@ -22,8 +23,8 @@ export class ReceiptsController {
   }
 
   @Get()
-  findAll() {
-    return this.receiptsService.findAll();
+  findAll(@Query('skip') skip, @Query('take') take) {
+    return this.receiptsService.findAll(skip, take);
   }
 
   @Get(':year/:month')

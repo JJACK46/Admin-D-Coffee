@@ -11,9 +11,10 @@ export class ReceiptService {
       throw new Error()
     }
   }
-  public static async getAll() {
+
+  public static async getAll(skip: number, take: number) {
     try {
-      const res = await http.get(this.path)
+      const res = await http.get(this.path, { params: { skip, take } })
       return res.data
     } catch (error) {
       throw new Error()

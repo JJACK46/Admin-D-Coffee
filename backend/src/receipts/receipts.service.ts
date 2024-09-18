@@ -57,11 +57,13 @@ export class ReceiptsService {
       branch: existBranch,
     });
 
-    console.log(receipt);
     return this.repo.save(receipt);
   }
 
-  findAll() {
+  findAll(skip: number, take: number) {
+    if (take === -1) {
+      take = 100;
+    }
     return this.repo.find({
       relations: {
         customer: true,
@@ -69,6 +71,8 @@ export class ReceiptsService {
         employee: true,
       },
       order: { id: 'DESC' },
+      skip,
+      take,
     });
   }
 
