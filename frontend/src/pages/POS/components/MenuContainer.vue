@@ -10,8 +10,8 @@ defineProps<{
 
 <template>
   <v-window-item :value="$props.tab">
-    <v-row no-gutters>
-      <v-col cols="3" v-for="item in $props.products" :key="item.id">
+    <v-row>
+      <v-col sm="3" cols="6" v-for="item in $props.products" :key="item.id">
         <MenuCard :item="item" />
       </v-col>
     </v-row>

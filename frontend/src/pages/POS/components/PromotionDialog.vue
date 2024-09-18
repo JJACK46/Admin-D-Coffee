@@ -48,7 +48,12 @@ const formComplete = ref<boolean>()
       <v-divider></v-divider>
       <v-card-actions class="pa-3 mx-2">
         <v-spacer></v-spacer>
-        <v-btn variant="outlined" text="cancel" @click="store.closeDialogPromotion"></v-btn>
+        <v-btn
+          variant="outlined"
+          color="error"
+          text="cancel"
+          @click="store.closeDialogPromotion"
+        ></v-btn>
         <v-btn
           color="primary"
           :disabled="!formComplete"

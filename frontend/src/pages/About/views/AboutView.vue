@@ -2,6 +2,7 @@
   <v-container width="1024" style="line-height: 1.7">
     <v-btn
       variant="tonal"
+      :color="getColorByMode"
       @click="
         () => {
           router.back()
@@ -34,6 +35,7 @@
 
 <script setup lang="ts">
 import router from '@/router'
+import { getColorByMode } from '@/utils/colors'
 import { textFooter } from '@/utils/info'
 </script>
 

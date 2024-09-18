@@ -12,6 +12,7 @@ import MembershipDialog from '../components/MembershipDialog.vue'
 import { useDisplay, useLocale } from 'vuetify'
 import router from '@/router'
 import { useCurrentTime } from '@/utils/date'
+import { getColorByMode } from '@/utils/colors'
 
 const store = usePosStore()
 const loader = useLoadingStore()
@@ -25,33 +26,31 @@ const fieldData = computed(() => {
   ]
 })
 
-const isMobileView = computed(() => useDisplay().mobile.value)
-
 onMounted(() => {
   store.fetchMenu()
   store.fetchPromotion()
 })
+
+const isMobile = computed(() => useDisplay().mobile.value)
 </script>
 
 <template>
-  <MembershipDialog />
-  <ReceiptDialog />
-  <PromotionDialog />
   <v-container fluid>
+    <MembershipDialog />
+    <ReceiptDialog />
+    <PromotionDialog />
     <OrderSheet />
     <v-card class="mb-5">
       <template #text>
         <v-row no-gutters class="d-flex align-center justify-end">
           <v-col
-            ><v-btn @click="() => router.back()" flat>{{ t('Back') }}</v-btn>
+            ><v-btn @click="() => router.push('/')" flat>{{ t('Back') }}</v-btn>
           </v-col>
           <v-col>
             <p class="d-flex">{{ useCurrentTime() }}</p>
           </v-col>
           <v-col cols="auto">
-            <v-btn :disabled="!isMobileView" @click="() => (store.drawerOpen = true)">
-              open operator
-            </v-btn>
+            <v-btn flat @click="store.toggleOperator"> toggle operator </v-btn>
           </v-col>
         </v-row>
       </template>
@@ -61,7 +60,24 @@ onMounted(() => {
         {{ item }}
       </v-tab>
       <v-tab value="Search" class="pa-0" fixed>
-        <v-responsive width="300">
+        <v-btn v-if="isMobile" variant="text" icon="mdi-magnify">
+          <v-dialog activator="parent">
+            <template #default="{ isActive }">
+              <v-card flat class="pa-5">
+                <v-text-field v-model="store.searchText" label="Search" single-line></v-text-field>
+                <template #actions>
+                  <v-btn
+                    flat
+                    @click="isActive.value = false"
+                    :color="getColorByMode"
+                    text="OK"
+                  ></v-btn>
+                </template>
+              </v-card>
+            </template>
+          </v-dialog>
+        </v-btn>
+        <v-responsive v-else width="300">
           <v-text-field
             clearable
             label="Search"
@@ -92,8 +108,8 @@ onMounted(() => {
           :products="data.products ?? []"
         />
         <v-window-item value="Search">
-          <v-row no-gutters>
-            <v-col cols="3" v-for="item in store.getSearchMenu" :key="item.id">
+          <v-row>
+            <v-col sm="3" cols="6" v-for="item in store.getSearchMenu" :key="item.id">
               <MenuCard :item="item" />
             </v-col>
           </v-row>

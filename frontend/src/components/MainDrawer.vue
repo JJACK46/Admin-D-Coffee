@@ -34,7 +34,7 @@ const drawer = useMainDrawerStore()
 
 <template>
   <v-navigation-drawer v-model="drawer.isExpand" persistent app>
-    <v-list v-if="auth.isAdmin()">
+    <v-list v-if="auth.isAdmin()" slim>
       <div v-for="item in navItems" :key="item.title">
         <v-list-group v-if="item.menu" :to="item.path" :prepend-icon="item.icon">
           <template #activator="{ props }">

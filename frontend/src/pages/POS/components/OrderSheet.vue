@@ -2,29 +2,34 @@
 import { requiredRule, rulePositiveNumberOnly } from '@/utils/rules'
 import { usePosStore } from '@/stores/pos'
 import { useDisplay } from 'vuetify'
+import { getColorByMode } from '@/utils/colors'
+import { computed } from 'vue'
 
 const store = usePosStore()
+const isMobileView = computed(() => useDisplay().mobile.value)
 </script>
 
 <template>
-  <v-navigation-drawer v-model="store.drawerOpen" location="right" width="512" class="py-2">
+  <v-navigation-drawer v-model="store.drawerOpen" location="right" width="512">
     <v-table fixed-header :height="useDisplay().xlAndUp.value ? 500 : 320">
       <template #top>
-        <v-row>
+        <v-row class="mt-1">
           <v-col>
             <h2 class="mx-5">Order List</h2>
           </v-col>
           <v-col class="d-flex justify-end">
             <v-btn
+              :color="getColorByMode"
               :disabled="!store.hasLastOrder()"
               variant="text"
               @click="store.getLastOrderItems()"
+              text="previous order"
             >
               <template #prepend>
                 <v-icon icon="mdi-clock"></v-icon>
               </template>
-              last order
             </v-btn>
+            <v-btn v-if="isMobileView" @click="store.toggleOperator" flat>close</v-btn>
           </v-col>
         </v-row>
         <v-divider class="ma-2"></v-divider>
@@ -64,7 +69,7 @@ const store = usePosStore()
         </tr>
       </tbody>
       <template #bottom>
-        <v-table density="compact">
+        <v-table density="comfortable">
           <tbody>
             <tr>
               <td>Total Price</td>
@@ -99,17 +104,19 @@ const store = usePosStore()
                   v-model.number="store.receivedValue"
                   hide-details
                   single-line
+                  style="margin-left: 130px"
                   type="number"
                   density="compact"
-                  variant="underlined"
+                  variant="outlined"
                 ></v-text-field>
               </td>
             </tr>
             <tr>
               <td>Total Net</td>
               <td class="text-end">
-                <u class="font-weight-bold">
+                <u class="text-h5">
                   {{ store.getTotalNetPrice }}
+                  <v-icon icon="mdi-currency-thb" size="small"></v-icon>
                 </u>
               </td>
             </tr>
@@ -118,11 +125,10 @@ const store = usePosStore()
       </template>
     </v-table>
 
-    <v-row class="pa-2">
+    <v-row class="px-5 mt-1">
       <v-col cols="6">
         <v-btn
           prepend-icon="mdi-delete"
-          rounded="lg"
           class="w-100"
           variant="outlined"
           color="red-darken-2"
@@ -135,7 +141,6 @@ const store = usePosStore()
         <v-btn
           prepend-icon="mdi-currency-thb"
           :disabled="!(store.receivedValue >= store.getTotalNetPrice)"
-          rounded="lg"
           class="w-100"
           color="primary"
           variant="flat"
@@ -148,7 +153,7 @@ const store = usePosStore()
         <v-btn
           text="Promotion"
           prepend-icon="mdi-ticket"
-          rounded="lg"
+          :color="getColorByMode"
           class="w-100"
           variant="outlined"
           @click="store.openDialogPromotion"
@@ -163,7 +168,6 @@ const store = usePosStore()
           prepend-icon="mdi-wallet-membership"
           text="Membership"
           color="secondary"
-          rounded="lg"
           class="w-100"
           variant="flat"
           @click="store.isDialogMembershipOpen = true"

@@ -113,6 +113,9 @@ export const usePosStore = defineStore('pos', {
     //     this.selectMembership?.id!
     //   )
     // },
+    clearSearchText() {
+      this.searchText = ''
+    },
     async fetchAvailableMembership() {
       this.availableMemberships = await CustomerService.getAllWithPurchase()
     },
@@ -298,6 +301,9 @@ export const usePosStore = defineStore('pos', {
     },
     hasLastOrder() {
       return localStorage.getItem('lastOrderItems') ? true : false
+    },
+    toggleOperator() {
+      this.drawerOpen = !this.drawerOpen
     },
     getLastOrderItems() {
       try {

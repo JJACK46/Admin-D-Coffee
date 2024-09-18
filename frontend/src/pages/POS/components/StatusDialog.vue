@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePosStore } from '@/stores/pos'
+import { getColorByMode } from '@/utils/colors'
 
 const store = usePosStore()
 </script>
@@ -16,10 +17,15 @@ const store = usePosStore()
       </span>
       <v-divider></v-divider>
       <v-card-actions class="justify-center d-flex">
-        <v-btn to="/receipt" target="_blank" prepend-icon="mdi-clock" variant="text"
-          >Visit History</v-btn
+        <v-btn
+          to="/receipt"
+          target="_blank"
+          prepend-icon="mdi-clock"
+          variant="text"
+          :color="getColorByMode"
+          >View History</v-btn
         >
-        <v-btn @click="store.closeDialogStatus" variant="text">OK</v-btn>
+        <v-btn @click="store.closeDialogStatus" variant="text" color="success">OK</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
